@@ -10,6 +10,13 @@ router.get('/', async (req, res) => {
     res.json(todo);
 });
 
+router.get('/:id',async(req,res)=>{         // buscar id de cita para actualizar datos del documento guardado en cita
+    const buscar_id = require('../consultas_db/buscar_id');
+    const obtener_por_id = await buscar_id('cita',req.params.id);
+    res.json(obtener_por_id);
+
+})
+
 router.put('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
