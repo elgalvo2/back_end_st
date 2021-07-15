@@ -35,6 +35,7 @@ const crear_cita = function(d_documento) {
     cita.setFecha(d_documento.fecha);
     cita.setDoc_completa(d_documento.doc_completa);
     cita.setNota(d_documento.nota);
+    cita.setTipo(d_documento.tipo);
 
     //var crear_paciente = require('./crear_paciente');
     //var crear_patron = require('./crear_patron');

@@ -21,13 +21,14 @@ router.put('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
     const respuesta = crear_cita(par);
-    console.log(respuesta);
     res.json("respuesta")
 });
 
 router.put('/:id',async(req,res)=>{
     const actualizar_documento = require('../actions/actualizar_documento');
+    const actualizar_antecedente = require('../actions/actualizar_antecedente');
     const actualizado = await actualizar_documento('cita',req.params.id);
+
     res.json(actualizado);
 })
 

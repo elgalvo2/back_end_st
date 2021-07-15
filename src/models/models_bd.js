@@ -159,6 +159,7 @@ var Cita_schema = new Schema({
     Fecha: String,
     Doc_completa: String,
     Nota: String,
+    Tipo:String,
     St7: [ST7_schema],
     St3: [ST3_schema],
     St3_rev: [ST3_rev_schema],

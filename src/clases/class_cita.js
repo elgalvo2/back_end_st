@@ -7,8 +7,15 @@ var Cita = function() { // validaciones de fechas y datos en HTML
         fecha: "",
         doc_completa: "",
         nota: "",
+        tipo:""
 
     };
+    getTipo = function(){
+        return sThis.datosCita.tipo;
+    }
+    setTipo = function(tip){
+        sThis.datosCita.tipo = tip
+    }
     getDocumento = function() {
         return sThis.datosCita.documento;
     };
@@ -60,10 +67,13 @@ var Cita = function() { // validaciones de fechas y datos en HTML
             Hora: sThis.datosCita.hora,
             Fecha: sThis.datosCita.fecha,
             Doc_completa: sThis.datosCita.doc_completa,
-            Nota: sThis.datosCita.nota
+            Nota: sThis.datosCita.nota,
+            Tipo: sThis.datosCita.tipo
         };
     };
     return {
+        getTipo:getTipo,
+        setTipo: setTipo,
         muestra_todo: muestra_todo,
         getDocumento: getDocumento,
         setDocumento: setDocumento,
