@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URI = 'mongodb://localhost/mern-crud-test';
+const URI = 'mongodb://localhost/proyecto';
 
 mongoose.connect(URI,{ useNewUrlParser: true,useUnifiedTopology: true 
  })

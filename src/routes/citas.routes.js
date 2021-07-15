@@ -2,18 +2,34 @@ const express = require('express');
 const router = express.Router();
 
 // Task Model
-const Task = require('../models/task');
 
 // GET all Tasks
 router.get('/', async (req, res) => {
-  const tasks = await Task.find();
-  res.json(tasks);
+    const obtener_todo = require('../consultas_db/obtener_todo');
+    const todo = obtener_todo('cita');
+    res.send(todo);
 });
 
+router.put('/',async(req,res)=>{
+    const crear_cita = require('../actions/crear_cita');
+    const par = JSON.parse(req.body.document); 
+    console.log(par);
+    //crear_cita(req.body.cita,req.body.document,req.body.paciente);
+    res.send("recibido");
+})
+
+
+/*
+
 // GET all Tasks
-router.get('/:id', async (req, res) => {
-  const task = await Task.findById(req.params.id);
-  res.json(task);
+router.put('/:d_cita/:d_documento', async (req, res) => {       
+  const action = crear_cita(req.params.d_cita,req.params.d_documento,req.params.d_paciente);
+  if(action == 1){
+    res.json('Cita guardada');
+  }else{
+    res.json('Cita no guardada');
+  }
+  
 });
 
 // ADD a new task
@@ -36,5 +52,5 @@ router.delete('/:id', async (req, res) => {
   await Task.findByIdAndRemove(req.params.id);
   res.json({status: 'Task Deleted'});
 });
-
+*/
 module.exports = router;
