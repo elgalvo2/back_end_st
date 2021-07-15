@@ -15,7 +15,7 @@ router.get('/:id',async(req,res)=>{         // buscar id de cita para actualizar
     const obtener_por_id = await buscar_id('cita',req.params.id);
     res.json(obtener_por_id);
 
-})
+});
 
 router.put('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
@@ -23,10 +23,27 @@ router.put('/',async(req,res)=>{
     const respuesta = crear_cita(par);
     console.log(respuesta);
     res.json("respuesta")
+});
+
+router.put('/:id',async(req,res)=>{
+    const actualizar_documento = require('../actions/actualizar_documento');
+    const actualizado = await actualizar_documento('cita',req.params.id);
+    res.json(actualizado);
 })
 
 
+
+
 /*
+
+// UPDATE a new task
+router.put('/:id', async (req, res) => {
+  const { title, description } = req.body;
+  const newTask = {title, description};
+  await Task.findByIdAndUpdate(req.params.id, newTask);
+  res.json({status: 'Task Updated'});
+});
+
 
 // GET all Tasks
 router.put('/:d_cita/:d_documento', async (req, res) => {       
@@ -47,13 +64,6 @@ router.post('/', async (req, res) => {
   res.json({status: 'Task Saved'});
 });
 
-// UPDATE a new task
-router.put('/:id', async (req, res) => {
-  const { title, description } = req.body;
-  const newTask = {title, description};
-  await Task.findByIdAndUpdate(req.params.id, newTask);
-  res.json({status: 'Task Updated'});
-});
 
 router.delete('/:id', async (req, res) => {
   await Task.findByIdAndRemove(req.params.id);

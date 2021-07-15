@@ -5,7 +5,6 @@ const buscar_id = async function(clase, args) {
 
     var modelo = models[clase];
     const resultado = await modelo.findById(args);
-    console.log(resultado);
 
     return resultado;
 
