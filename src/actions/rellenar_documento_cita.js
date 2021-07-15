@@ -50,26 +50,23 @@ const crear_cita = function(d_documento) {
         var crear_paciente = require('./crear_paciente');
         const paciente = crear_paciente(d_documento).muestra_todo();
 
+        const parametros_busqueda = ({ "Paciente.No_seguro": paciente.No_seguro }, { "Fecha_antecedente": d_documento.fecha_antecedente });
+        const buscar_antecedente = buscar_id("st7", parametros_busqueda);
 
-        const St3 = require('../clases/class_st3');
-        var st3_creada = St3(); // crea el objeto st3
+        const St3 = require('./crear_st3');
+        var st3_creada = St3(d_documento, buscar_antecedente, paciente); // crea el objeto st3
 
         st3_creada.setArchivo("Citados"); // asigna propiedad archivo
 
         const datos_st3 = st3_creada.muestra_todo(); // obtiene los datos del objeto
         guardar_registro(d_documento.tipo, datos_st3); // guarda el registro
 
-        cita.setDocumento(datos_st3); // vincula el documento a la cita creada
-        const g_cita = cita.muestra_todo(); // obtiene los datos del objeto dicta
-        console.log(g_cita);
-        guardar_registro("cita", g_cita)
-            .then(()=>{
-                return "cita gurdada con st3";
-            }) // guarda la cita
-            .catch((error)=>{
-                return error;
-            })
-        
+        cita.setDocumento(datos_st3);
+        const g_cita = cita.muestra_todo();
+
+        guardar_registro("cita", g_cita);
+
+        return 1;
 
     } else if (d_documento.tipo == "st3_rev") {
 

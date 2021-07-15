@@ -9,11 +9,9 @@ const mongoose = require('mongoose')
 
 var obtener_todo = async(clase) => {
     var modelo = models[clase];
-
-    var documents_array = await modelo.find();
-
-    const todo = documents_array;
-    return todo;
+    const aguardar = await modelo.find();
+    return aguardar;
+    
 
     // una function alterna
 

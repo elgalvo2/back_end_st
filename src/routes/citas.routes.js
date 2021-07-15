@@ -6,16 +6,16 @@ const router = express.Router();
 // GET all Tasks
 router.get('/', async (req, res) => {
     const obtener_todo = require('../consultas_db/obtener_todo');
-    const todo = obtener_todo('cita');
-    res.send(todo);
+    const todo = await obtener_todo('cita');
+    res.json(todo);
 });
 
 router.put('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
-    const par = JSON.parse(req.body.document); 
-    console.log(par);
-    //crear_cita(req.body.cita,req.body.document,req.body.paciente);
-    res.send("recibido");
+    const par = req.body;
+    const respuesta = crear_cita(par);
+    console.log(respuesta);
+    res.json("respuesta")
 })
 
 
