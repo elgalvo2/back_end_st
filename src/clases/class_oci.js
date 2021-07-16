@@ -1,5 +1,5 @@
 var OCI = function() {
-    var Sthis = this;
+    var sThis = this;
     this.datosOCI = {
         id: "",
         serie: "",
@@ -51,7 +51,7 @@ var OCI = function() {
     getArchivo = function() {
         return sThis.datosOCI.archivo;
     }
-    devuelve_todo = function() {
+    muestra_todo = function() {
         return {
             id: sThis.datosOCI.id,
             serie: sThis.datosOCI.serie,
@@ -73,12 +73,12 @@ var OCI = function() {
         setTipo: setTipo,
         setFecha_incapacidad: setFecha_incapacidad,
         getFecha_incapacidad: getFecha_incapacidad,
-        setNombre_paciente: setNOmbre_paciente,
+        setNombre_paciente: setNombre_paciente,
         setNo_seguro: setNo_seguro,
         getNo_seguro: getNo_seguro,
         setArchivo: setArchivo,
         getArchivo: getArchivo,
-        devuelve_todo: devuelve_todo
+        muestra_todo: muestra_todo
     };
 
 

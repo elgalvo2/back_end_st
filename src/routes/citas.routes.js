@@ -27,7 +27,10 @@ router.put('/',async(req,res)=>{
 router.put('/:id',async(req,res)=>{
     const actualizar_documento = require('../actions/actualizar_documento');
     const actualizar_antecedente = require('../actions/actualizar_antecedente');
-    const actualizado = await actualizar_documento('cita',req.params.id);
+    if(req.params.tipo == 'st3'){
+      const antecedente = actualizar_antecedente('st7',req.params)
+    }
+    const actualizado = await actualizar_documento('cita',req.params);
 
     res.json(actualizado);
 })

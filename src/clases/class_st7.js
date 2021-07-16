@@ -50,6 +50,12 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
     setPaciente = function(paciente) {
         sThis.datosST_7.paciente = paciente;
     };
+    getPatron = function() {
+        return sThis.datosST_7.paciente;
+    };
+    setPatron = function(pat) {
+        sThis.datosST_7.paciente = pat;
+    };
     getTipo = function() {
         return sThis.datosST_7.tipo;
     };
@@ -121,7 +127,7 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
     };
     muestra_todo = function() {
         return {
-            id: id,
+            id: sThis.datosST_7.id,
             cita: sThis.datosST_7.cita,
             tipo: sThis.datosST_7.tipo,
             patron: sThis.datosST_7.patron,
@@ -143,12 +149,16 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         };
     }
     return {
+        setId:setId,
+        getId:getId,
         getOci: getOci,
         setOci: setOci,
         getCita: getCita,
         setCita: setCita,
         muestra_todo: muestra_todo,
         getArchivo: getArchivo,
+        setPatron:setPatron,
+        getPatron:getPatron,
         setArchivo: setArchivo,
         getPaciente: getPaciente,
         setPaciente: setPaciente,

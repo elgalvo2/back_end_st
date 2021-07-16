@@ -162,19 +162,27 @@ const crear_cita = function(d_documento) {
 
         return 1;
 
-    } else if (d_documento == "st7") {
+    } else if (d_documento.tipo == "st7") {
 
-        var crear_oci = require('./crear_oci');
-        const oci = crear_oci(d_oci).muestra_todo();
+        var crear_oci = require('../actions/crear_oci');
+        const oci = crear_oci();
+        oci.setSerie(d_documento.serie);
+        const oc = oci.muestra_todo();
 
-        var crear_patron = require('./crear_patron');
-        const patron = crear_patron(d_patron).muestra_todo();
+        const crear_patron = require('../actions/crear_patron');
+        const patron = crear_patron();
+        patron.setRegistro(d_documento.registro);
+        patron.setRazon_social(d_documento.razon_social);
+        patron.setDireccion(d_documento.direccion);
+        const pat = patron.muestra_todo();
 
-        var crear_paciente = require('./crear_paciente');
-        const paciente = crear_paciente(d_paciente).muestra_todo();
+
+        var crear_paciente = require('../actions/crear_paciente');
+        const paciente = crear_paciente(d_documento).muestra_todo();
+    
 
         const St7 = require('./crear_st7');
-        var st7_creada = St7(d_documento, paciente, patron, oci);
+        var st7_creada = St7(d_documento, paciente, pat, oc);
 
         st7_creada.setArchivo("citados");
 
@@ -184,9 +192,13 @@ const crear_cita = function(d_documento) {
         cita.setDocumento(datos_st7_creada);
         const g_cita = cita.muestra_todo();
 
-        guardar_registro("cita", g_cita);
-
-        return 1;
+        guardar_registro("cita", g_cita)
+            .then(()=>{
+                return "cita gurdada con st7";
+            }) // guarda la cita
+            .catch((error)=>{
+                return error;
+            })
 
     } else if (d_documento == "st8") {
 

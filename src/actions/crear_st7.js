@@ -1,4 +1,4 @@
-var ST7 = require('.../clases/class_st7');
+var ST7 = require('../clases/class_st7');
 
 var st7 = ST7();
 var crear_st7 = function(d_st7, d_paciente, d_patron, d_oci) {
