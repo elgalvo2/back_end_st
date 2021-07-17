@@ -81,13 +81,13 @@ var ST4_schema = new Schema({
     Tipo: String,
     Folio: String,
     Paciente: [Paciente_schema],
+    Fecha_inicio: String,
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
     Firma_trabajador: String, //si / no        
     Copia_entregada: String, // si / no 
     Fecha_copia_entregada: String,
-    Fecha_inicio: String,
     Archivo: String
 });
 var ST4_rev_schema = new Schema({
@@ -95,6 +95,7 @@ var ST4_rev_schema = new Schema({
     Folio: String,
     Paciente: [Paciente_schema],
     St4_previa: [ST4_schema],
+    Fecha_st4_previa: String,
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
@@ -150,6 +151,7 @@ var ST8_schema_ast7 = new Schema({
 });
 var ST8_schema_ast9 = new Schema({
     Tipo: String,
+    Paciente: [Paciente_schema],
     Tipo_antecedente:String,
     Antecedente: [ST9_schema], // st7 o st9
     Fecha_antecedente: String,

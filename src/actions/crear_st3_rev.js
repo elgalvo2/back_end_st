@@ -1,4 +1,4 @@
-var St3_rev = require('.../clases/class_st3_rev');
+var St3_rev = require('../clases/class_st3_rev');
 
 var st3_rev = St3_rev();
 var crear_st3_rev = function(d_st3_rev, d_st3, d_paciente) {

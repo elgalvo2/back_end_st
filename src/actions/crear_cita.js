@@ -53,7 +53,7 @@ const crear_cita = async function(d_documento) {
 
         var crear_paciente = require('../actions/crear_paciente'); // crear paciente
         const paciente = crear_paciente(d_documento);
-        d_paciente = paciente.muestra_todo();
+        const d_paciente = paciente.muestra_todo();
 
         const obtener_antecedente = require('../actions/obtener_antecedente');
         const antecedente = await obtener_antecedente(d_documento);
@@ -80,47 +80,48 @@ const crear_cita = async function(d_documento) {
 
         var crear_paciente = require('../actions/crear_paciente'); // crear paciente
         const paciente = crear_paciente(d_documento);
-        d_paciente = paciente.muestra_todo();
+        const d_paciente = paciente.muestra_todo();
 
-        console.log(d_paciente);
 
         const obtener_antecedente = require('../actions/obtener_antecedente');
         const antecedente = await obtener_antecedente(d_documento); // <---d_documento contiene  los parametro de busqueda
 
-        console.log(antecedente);
 
-/*
 
         const St3_rev = require('../actions/crear_st3_rev');
-        var st3_rev_creada = St3_rev(d_documento,antecedente,d_paciente); // crea el objeto st3
+        var st3_rev_creada = St3_rev(d_documento,antecedente,d_paciente); // crea el objeto st3_rev
 
-
-
-
-
-
-        const St3_rev = require('./crear_st3_rev');
-
-        const st3_rev_creada = St3_rev(d_documento, buscar_antecedente, paciente);
         st3_rev_creada.setArchivo("citados");
 
         const datos_st3_rev = st3_rev_creada.muestra_todo();
-        guardar_registro(d_documento.tipo, datos_st3_rev);
+
+        console.log(datos_st3_rev);
+        const mensaje = await guardar_registro(d_documento.tipo, datos_st3_rev);
+        
+        console.log(mensaje);
 
         cita.setDocumento(datos_st3_rev);
+
         const g_cita = cita.muestra_todo();
 
-        guardar_registro("cita", g_cita);
+        const cit = await guardar_registro('cita',g_cita);
 
-        return 1; // se deve enviar una respuesta adecuada
-*/
+        const reg_g = await guardar_cita_reg(cit._id,datos_st3_rev);
+
+        console.log(reg_g);
+
+
+       
+
     } else if (d_documento.tipo == "st4") {
 
-        var crear_paciente = require('./crear_paciente');
-        const paciente = crear_paciente(d_paciente).muestra_todo();
+        
+        var crear_paciente = require('../actions/crear_paciente'); // crear paciente
+        const paciente = crear_paciente(d_documento);
+        const d_paciente = paciente.muestra_todo();
 
-        const St4 = require('./crear_st4');
-        var st4_creada = St4(d_documento, paciente);
+        const St4 = require('../actions/crear_st4');
+        var st4_creada = St4(d_documento, d_paciente);
 
         st4_creada.setArchivo("citados");
 
@@ -130,32 +131,39 @@ const crear_cita = async function(d_documento) {
         cita.setDocumento(datos_st4);
         const g_cita = cita.muestra_todo();
 
-        guardar_registro("cita", g_cita);
-
-        return 1;
+        const cit = await guardar_registro("cita", g_cita)
+                
+        const reg_g = await guardar_cita_reg(cit._id,datos_st4);
+        console.log(reg_g);
 
     } else if (d_documento.tipo == "st4_rev") {
 
-        var crear_paciente = require('./crear_paciente');
-        const paciente = crear_paciente(d_paciente).muestra_todo();
+      
 
-        const parametro_busqueda = { "Paciente.No_seguro": paciente.no_seguro };
-        const buscar_antecedente = buscar_id("st4", parametros_busqueda);
+        var crear_paciente = require('../actions/crear_paciente'); // crear paciente
+        const paciente = crear_paciente(d_documento);
+        const d_paciente = paciente.muestra_todo();
 
-        const St4_rev = require('./crear_st4_rev');
+        const obtener_antecedente = require('../actions/obtener_antecedente');
+        const antecedente = await obtener_antecedente(d_documento);
 
-        const st4_rev_creada = St4_rev(d_documento, paciente);
-        st4_rev_creada.setArchivo("citados");
 
-        const datos_st4_rev = st4_rev_creada.muestra_todo();
-        guardar_registro(d_documento.tipo, datos_st4_rev);
+        const St4_rev = require('../actions/crear_st4_rev');
+        var st4_rev_creada = St4_rev(d_documento,antecedente,d_paciente); // crea el objeto st3
 
-        cita.setDocumento(datos_st4_rev);
-        const g_cita = cita.muestra_todo();
+        st4_rev_creada.setArchivo("Citados"); // asigna propiedad archivo
 
-        guardar_registro("cita", g_cita);
+        const datos_st4_rev = st4_rev_creada.muestra_todo(); // obtiene los datos del objeto
+       
+        guardar_registro(d_documento.tipo, datos_st4_rev); // guarda el registro
 
-        return 1;
+        cita.setDocumento(datos_st4_rev); // vincula el documento a la cita creada
+        const g_cita = cita.muestra_todo(); // obtiene json
+
+        const cit = await guardar_registro("cita", g_cita)
+                
+        const reg_g = await guardar_cita_reg(cit._id,datos_st4_rev);
+
 
     } else if (d_documento.tipo == "st6") {
 
@@ -221,49 +229,67 @@ const crear_cita = async function(d_documento) {
 
            
 
-    } else if (d_documento == "st8") {
+    } else if (d_documento.tipo == "st8") {
 
-        var crear_paciente = require('./crear_paciente');
-        const paciente = crear_paciente(d_paciente).muestra_todo();
+        var crear_paciente = require('../actions/crear_paciente'); // crear paciente
+        const paciente = crear_paciente(d_documento);
+        const d_paciente = paciente.muestra_todo();
 
-        const St8 = require('./crear_st8');
+        
+
+        const St8 = require('../actions/crear_st8');
+        const obtener_antecedente = require('../actions/obtener_antecedente');
 
         if (d_documento.tipo_antecedente == "st7") {
 
-            const parametro_busqueda = ({ "Paciente.No_seguro": paciente.no_seguro }, { "Fecha_accidente": d_documento.fecha_antecedente });
-            const d_antecedente = buscar_id("st7", parametro_busqueda);
+            
+            
+            const d_antecedente = await obtener_antecedente(d_documento);
 
-            const st8_creada = St8(d_documento, d_antecedente);
+
+            const st8_creada = St8(d_documento, d_antecedente,d_paciente);
 
             st8_creada.setArchivo("citados");
 
+
             const datos_st8 = st8_creada.muestra_todo();
-            guardar_registro(d_documento.tipo, datos_st8);
+
+            await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
+
+           
 
             cita.setDocumento(datos_st8);
             const g_cita = cita.muestra_todo();
 
-            guardar_registro("cita", g_cita);
+            const cit = await guardar_registro('cita',g_cita);
 
-            return 1;
+            const reg_g = await guardar_cita_reg(cit._id,datos_st8);
+            console.log(reg_g);
+
 
         } else if (d_documento.tipo_antecedente == "st9") {
-            const parametro_busqueda = ({ "Paciente.No_seguro": paciente.no_seguro }, { "Fecha_primera_consulta": d_documento.fecha_antecedente });
-            const d_antecedente = buscar_id("st9", parametro_busqueda);
+            
+            const d_antecedente = await obtener_antecedente(d_documento);
 
-            const st8_creada = St8(d_documento, d_antecedente);
+
+            const st8_creada = St8(d_documento, d_antecedente,d_paciente);
 
             st8_creada.setArchivo("citados");
 
+
             const datos_st8 = st8_creada.muestra_todo();
-            guardar_registro(d_documento.tipo, datos_st8);
+
+            const mensaje = await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
+
+            console.log(mensaje);
 
             cita.setDocumento(datos_st8);
             const g_cita = cita.muestra_todo();
 
-            guardar_registro("cita", g_cita);
+            const cit = await guardar_registro('cita',g_cita);
 
-            return 1;
+            const reg_g = await guardar_cita_reg(cit._id,datos_st8);
+            console.log(reg_g);
 
         } else {
             return 0;

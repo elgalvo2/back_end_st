@@ -6,6 +6,7 @@ var ST_4_rev = function() {
         folio: "",
         paciente: {},
         st4_previa: {},
+        fecha_st4_previa:"",
         fecha_realizacion: "", // es la fecha cuando el dr valora al paciente el dia de la cita
         medico: "",
         auo: "",
@@ -14,6 +15,12 @@ var ST_4_rev = function() {
         fecha_copia_entregada: "",
         fecha_inicio: "",
         archivo: ""
+    };
+    getFecha_st4_previa = function() {
+        return sThis.datosST_4.fecha_st4_previa;
+    };
+    setFecha_st4_previa = function(fecha) {
+        sThis.datosST_4.fecha_st4_previa = fecha;
     };
     getId = function() {
         return sThis.datosST_4.id;
@@ -88,6 +95,7 @@ var ST_4_rev = function() {
             Folio: sThis.datosST_4.folio,
             Paciente: sThis.datosST_4.paciente,
             St4_previa: sThis.datosST_4.st4_previa,
+            Fecha_st4_previa: sThis.datosST_4.fecha_st4_previa,
             Fecha_realizacion: sThis.datosST_4.fecha_realizacion,
             Medico: sThis.datosST_4.medico,
             Auo: sThis.datosST_4.auo,
@@ -106,6 +114,8 @@ var ST_4_rev = function() {
         getId: getId,
         getArchivo: getArchivo,
         setArchivo: setArchivo,
+        getFecha_st4_previa: getFecha_st4_previa,
+        setFecha_st4_previa: setFecha_st4_previa,
         getTipo: getTipo,
         getFolio: getFolio,
         setFolio: setFolio,

@@ -3,6 +3,7 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     this.datosST_8 = {
         id: "",
         tipo: "st8",
+        paciente: {},
         tipo_antecedente: "",
         fecha_antecedente: "",
         antecedente: {}, // st7 o st9
@@ -25,13 +26,20 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     }
     getFecha_antecedente = function() {
         return sThis.datosST_8.fecha_antecedente;
-    }
+    };
     setTipo_antecedente = function(ante) {
         sThis.datosST_8.tipo_antecedente = ante;
-    }
+    };
     getTipo_antecedente = function() {
         return sThis.datosST_8.tipo_antecedente;
+    };
+    setPaciente = function(pacien){
+        sThis.datosST_8.paciente = pacien;
+    };
+    getPaciente = function(){
+        return sThis.datosST_8.paciente;
     }
+
     getArchivo = function() {
         return sThis.datosST_8.archivo;
     };
@@ -83,9 +91,10 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     setFecha_copia_entregada = function(f_copi) {
         sThis.datosST_8.fecha_copia_entregada = f_copi;
     };
-    devuelve_todo = function() {
+    muestra_todo = function() {
         return {
             Tipo: sThis.datosST_8.tipo,
+            Tipo_antecedente: sThis.datosST_8.tipo_antecedente,
             Antecedente: sThis.datosST_8.antecedente, // st7 o st9
             Fecha_antecedente: sThis.datosST_8.fecha_antecedente,
             Fecha_recaida: sThis.datosST_8.fecha_recaida,
@@ -99,8 +108,11 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     }
 
     return {
+        muestra_todo:muestra_todo,
         setId: setId,
         getId: getId,
+        setPaciente: setPaciente,
+        getPaciente: getPaciente,
         getTipo_antecedente: getTipo_antecedente,
         setTipo_antecedente: setTipo_antecedente,
         getFecha_antecedente: getFecha_antecedente,
@@ -108,6 +120,7 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
         getArchivo: getArchivo,
         setArchivo: setArchivo,
         getTipo: getTipo,
+        setTipo:setTipo,
         getAntecedente: getAntecedente,
         setAntecedente: setAntecedente,
         getFecha_recaida: getFecha_recaida,

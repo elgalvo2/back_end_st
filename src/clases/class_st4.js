@@ -1,17 +1,18 @@
 var ST_4 = function() {
     var sThis = this;
     this.datosST_4 = {
-        tipo: "st4",
         id: "",
+        tipo: "st4",
         folio: "",
         paciente: {},
+        fecha_inicio: "",
         fecha_realizacion: "",
         medico: "",
         auo: "",
         firma_trabajador: "", //si / no        
         copia_entregada: "", // si / no 
         fecha_copia_entregada: "",
-        fecha_inicio: "",
+        
         archivo: ""
     };
     setId = function(ID) {
@@ -83,26 +84,26 @@ var ST_4 = function() {
         return sThis.datosST_4.fecha_inicio;
     };
     setFecha_inicio = function(fecha_ini) {
-        sThis.datosST_3.fecha_inicio = fecha_ini;
+        sThis.datosST_4.fecha_inicio = fecha_ini;
     };
-    devuelve_todo = function() {
+    muestra_todo = function() {
         return {
             id: sThis.datosST_4.id,
             Tipo: sThis.datosST_4.tipo,
             Folio: sThis.datosST_4.folio,
             Paciente: sThis.datosST_4.paciente,
-            Fecha_realizacion: sthis.datosST_4.fecha_realizacion,
+            Fecha_inicio: sThis.datosST_4.fecha_inicio,
+            Fecha_realizacion: sThis.datosST_4.fecha_realizacion,
             Medico: sThis.datosST_4.medico,
-            Auo: sthis.datosST_4.auo,
+            Auo: sThis.datosST_4.auo,
             Firma_trabajador: sThis.datosST_4.firma_trabajador, //si / no        
             Copia_entregada: sThis.datosST_4.copia_entregada,
             Fecha_copia_entregada: sThis.datosST_4.fecha_copia_entregada,
-            Fecha_inicio: sThis.datosST_4.fecha_inicio,
             Archivo: sThis.datosST_4.archivo
         }
     }
     return {
-        devuelve_todo: devuelve_todo,
+        muestra_todo: muestra_todo,
         setId: setId,
         getId: getId,
         getArchivo: getArchivo,
