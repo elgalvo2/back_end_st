@@ -21,18 +21,20 @@ router.put('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
     const respuesta = crear_cita(par);
-    res.json("respuesta")
+    res.json(respuesta);
 });
 
-router.put('/:id',async(req,res)=>{
+router.put('/:id',async(req,res)=>{ // id de la cita donde se actualiza el documento
     const actualizar_documento = require('../actions/actualizar_documento');
     const actualizar_antecedente = require('../actions/actualizar_antecedente');
-    if(req.params.tipo == 'st3'){
-      const antecedente = actualizar_antecedente('st7',req.params)
+    const guardar_cita_reg = require('../actions/guardar_cita_reg');
+    
+    if(req.params.tipo == 'st7'){
+      
     }
     const actualizado = await actualizar_documento('cita',req.params);
 
-    res.json(actualizado);
+    
 })
 
 

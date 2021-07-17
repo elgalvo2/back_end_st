@@ -1,6 +1,7 @@
 var Cita = require('../clases/class_cita')
 var guardar_registro = require('../consultas_db/guardar_registro');
 var buscar_id = require('../consultas_db/buscar_id');
+var guardar_cita_reg = require('../actions/guardar_cita_reg');
 // Script para crear clase desde la opcion de generar cita
 
 // recibira JSON de cita y del documento 
@@ -10,7 +11,7 @@ var buscar_id = require('../consultas_db/buscar_id');
 // d_paciente: contiene los datos del paciente
 
 
-const crear_cita = function(d_documento) {
+const crear_cita = async function(d_documento) {
 
     /*var d_patron = p_patron || (p_patron = {
         razon_social: "",
@@ -167,38 +168,48 @@ const crear_cita = function(d_documento) {
         var crear_oci = require('../actions/crear_oci');
         const oci = crear_oci();
         oci.setSerie(d_documento.serie);
-        const oc = oci.muestra_todo();
+        oc = oci.muestra_todo();
+
+    
 
         const crear_patron = require('../actions/crear_patron');
-        const patron = crear_patron();
-        patron.setRegistro(d_documento.registro);
-        patron.setRazon_social(d_documento.razon_social);
-        patron.setDireccion(d_documento.direccion);
-        const pat = patron.muestra_todo();
+        const patron = crear_patron(d_documento);
+        pat = patron.muestra_todo();
+
+    
 
 
         var crear_paciente = require('../actions/crear_paciente');
-        const paciente = crear_paciente(d_documento).muestra_todo();
-    
+        const paciente = crear_paciente()
+        paciente.setNo_seguro(d_documento.no_seguro);
+        paciente.setNombre(d_documento.nombre);
+        paciente.setApellido(d_documento.apellido);
+        paciente.setTelefono(d_documento.telefono);
+        d_paciente = paciente.muestra_todo();
+        
+       
 
-        const St7 = require('./crear_st7');
-        var st7_creada = St7(d_documento, paciente, pat, oc);
+        const St7 = require('../actions/crear_st7');
+        var st7_creada = St7(d_documento, d_paciente, pat, oc);
+
+
 
         st7_creada.setArchivo("citados");
 
         const datos_st7_creada = st7_creada.muestra_todo();
-        guardar_registro(d_documento.tipo, datos_st7_creada);
+
+    
+
+        guardar_registro(d_documento.tipo, st7_creada);
 
         cita.setDocumento(datos_st7_creada);
         const g_cita = cita.muestra_todo();
 
-        guardar_registro("cita", g_cita)
-            .then(()=>{
-                return "cita gurdada con st7";
-            }) // guarda la cita
-            .catch((error)=>{
-                return error;
-            })
+        const cit = await guardar_registro("cita", g_cita)
+                
+        console.log(datos_st7_creada)
+        const reg_g = await guardar_cita_reg(cit._id,datos_st7_creada)
+           
 
     } else if (d_documento == "st8") {
 

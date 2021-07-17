@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 let modelos = [];
 modelos['paciente'] = schemas.paciente_model;
+modelos['oci'] = schemas.oci_model;
 modelos['patron'] = schemas.patron_model;
 modelos['st3'] = schemas.st3_model;
 modelos['st3_rev'] = schemas.st3_rev_model;

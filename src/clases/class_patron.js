@@ -1,34 +1,34 @@
 var Patron = function() {
     var sThis = this;
     this.datosPatron = {
-        razon_social: "",
-        registro_patronal: "",
-        direccion: ""
+        Razon_social: "",
+        Registro_patronal: "",
+        Direccion: ""
     };
 
     getRazon_social = function() {
-        return sThis.datosPatron.razon_social;
+        return sThis.datosPatron.Razon_social;
     };
     setRazon_social = function(RZ) {
-        sThis.datosPatron.razon_social = RZ;
+        sThis.datosPatron.Razon_social = RZ;
     };
     getRegistro = function() {
-        return sThis.datosPatron.registroPatronal;
+        return sThis.datosPatron.RegistroPatronal;
     };
     setRegistro = function(registro) {
-        sThis.datosPatron.registro_patronal = registro;
+        sThis.datosPatron.Registro_patronal = registro;
     };
     getDireccion = function() {
-        return sThis.datosPatron.direccion;
+        return sThis.datosPatron.Direccion;
     };
     setDireccion = function(dir) {
-        sThis.datosPatron.direccion = dir;
+        sThis.datosPatron.Direccion = dir;
     };
     muestra_todo = function() {
         return {
-            razon_social: sThis.datosPatron.razon_social,
-            registro_patronal: sThis.datosPatron.registro_patronal,
-            direccion: sThis.datosPatron.direccion
+            Razon_social: sThis.datosPatron.Razon_social,
+            Registro_patronal: sThis.datosPatron.Registro_patronal,
+            Direccion: sThis.datosPatron.Direccion
         };
     };
     return {

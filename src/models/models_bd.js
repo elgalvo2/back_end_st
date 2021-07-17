@@ -11,7 +11,7 @@ var Patron_schema = new Schema({ //
     Razon_social: String,
     Registro_patronal: String,
     Direccion: String
-})
+});
 
 var Oci_schema = new Schema({
     Id: String,
@@ -33,6 +33,7 @@ var ST7_schema = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
     Patron: [Patron_schema],
+    Oci:[Oci_schema],
     Fecha_accidente: String,
     Folio_incapacidad_inicial: String, //folio de la incapacidad en caso de existir
     Fecha_incapacidad_inicial: String, // fecha incapacidad inicial en caso de existir

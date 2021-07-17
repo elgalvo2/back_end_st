@@ -53,13 +53,13 @@ var OCI = function() {
     }
     muestra_todo = function() {
         return {
-            id: sThis.datosOCI.id,
-            serie: sThis.datosOCI.serie,
-            tipo: sThis.datosOCI.tipo,
-            fecha_incapacidad: sThis.datosOCI.fecha_incapacidad,
-            nombre_paciente: sThis.datosOCI.nombre_paciente,
-            no_seguro: sThis.datosOCI.no_seguro,
-            archivo: sThis.datosOCI.archivo
+            Id: sThis.datosOCI.id,
+            Serie: sThis.datosOCI.serie,
+            Tipo: sThis.datosOCI.tipo,
+            Fecha_incapacidad: sThis.datosOCI.fecha_incapacidad,
+            Nombre_paciente: sThis.datosOCI.nombre_paciente,
+            No_seguro: sThis.datosOCI.no_seguro,
+            Archivo: sThis.datosOCI.archivo
 
         };
     }

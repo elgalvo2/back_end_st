@@ -3,9 +3,9 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
     this.datosST_7 = {
         id: "",
         tipo: "st7",
-        patron: {},
-        paciente: {},
-        oci: {},
+        Paciente: {},
+        Patron: {},
+        Oci: {},
         fecha_accidente: "",
         folio_incapacidad_inicial: "", //folio de la incapacidad en caso de existir
         fecha_incapacidad_inicial: "", // fecha incapacidad inicial en caso de existir
@@ -17,7 +17,7 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         fecha_copia_entregada: "",
         st1: "", // si / no ya calificado
         st2: "", //si  / no alta de paciente
-        archivo: ""
+        Archivo: ""
     };
     setId = function(ID) {
         sThis.datosST_7.id = ID;
@@ -26,16 +26,16 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         return sThis.datosST_7.id;
     }
     setOci = function(OCI) {
-        sThis.datosST_7.oci = OCI;
+        sThis.datosST_7.Oci = OCI;
     }
     getOci = function() {
-        return sThis.datosST_7.oci;
+        return sThis.datosST_7.Oci;
     }
     getArchivo = function() {
-        return sThis.datosST_7.archivo;
+        return sThis.datosST_7.Archivo;
     };
     setArchivo = function(archi) {
-        sThis.datosST_7.archivo = archi;
+        sThis.datosST_7.Archivo = archi;
     };
     getCita = function() {
         return sThis.datosST_7.cita;
@@ -45,16 +45,16 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
     };
 
     getPaciente = function() {
-        return sThis.datosST_7.paciente;
+        return sThis.datosST_7.Paciente;
     };
     setPaciente = function(paciente) {
-        sThis.datosST_7.paciente = paciente;
+        sThis.datosST_7.Paciente = paciente;
     };
     getPatron = function() {
-        return sThis.datosST_7.paciente;
+        return sThis.datosST_7.Patron;
     };
     setPatron = function(pat) {
-        sThis.datosST_7.paciente = pat;
+        sThis.datosST_7.Patron = pat;
     };
     getTipo = function() {
         return sThis.datosST_7.tipo;
@@ -127,24 +127,24 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
     };
     muestra_todo = function() {
         return {
-            id: sThis.datosST_7.id,
-            cita: sThis.datosST_7.cita,
-            tipo: sThis.datosST_7.tipo,
-            patron: sThis.datosST_7.patron,
-            oci: sThis.datosST_7.oci,
-            paciente: sThis.datosST_7.paciente,
-            fecha_accidente: sThis.datosST_7.fecha_accidente,
-            folio_incapacidad_inicial: sThis.datosST_7.folio_incapacidad_inicial, //folio de la incapacidad en caso de existir
-            fecha_incapacidad_inicial: sThis.datosST_7.fecha_incapacidad_inicial, // fecha incapacidad inicial en caso de existir
-            accidente_trayecto: sThis.datosST_7.accidente_trayecto, // si / no
-            medico: sThis.datosST_7.medico,
-            auo: sThis.datosST_7.auo,
-            firma_trabajador: sThis.datosST_7.firma_trabajador, //si / no        
-            copia_entregada: sThis.datosST_7.copia_entregada, // si / no 
-            fecha_copia_entregada: sThis.datosST_7.fecha_copia_entregada,
-            st1: sThis.datosST_7.st1, // si / no ya calificado
-            st2: sThis.datosST_7.st2, //si  / no alta de paciente
-            archivo: sThis.datosST_7.archivo,
+            Id: sThis.datosST_7.id,
+            Cita: sThis.datosST_7.cita,
+            Tipo: sThis.datosST_7.tipo,
+            Patron: sThis.datosST_7.Patron,
+            Oci: sThis.datosST_7.Oci,
+            Paciente: sThis.datosST_7.Paciente,
+            Fecha_accidente: sThis.datosST_7.fecha_accidente,
+            Folio_incapacidad_inicial: sThis.datosST_7.folio_incapacidad_inicial, //folio de la incapacidad en caso de existir
+            Fecha_incapacidad_inicial: sThis.datosST_7.fecha_incapacidad_inicial, // fecha incapacidad inicial en caso de existir
+            Accidente_trayecto: sThis.datosST_7.accidente_trayecto, // si / no
+            Medico: sThis.datosST_7.medico,
+            Auo: sThis.datosST_7.auo,
+            Firma_trabajador: sThis.datosST_7.firma_trabajador, //si / no        
+            Copia_entregada: sThis.datosST_7.copia_entregada, // si / no 
+            Fecha_copia_entregada: sThis.datosST_7.fecha_copia_entregada,
+            St1: sThis.datosST_7.st1, // si / no ya calificado
+            St2: sThis.datosST_7.st2, //si  / no alta de paciente
+            Archivo: sThis.datosST_7.archivo,
 
         };
     }
