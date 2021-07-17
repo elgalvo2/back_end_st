@@ -98,20 +98,20 @@ var ST_6 = function() {
     devuelve_todo = function() {
         return {
             id: sThis.datosST_6.id,
-            tipo: sThis.datosST_6.tipo,
-            folio: sThis.datosST_6.folio,
-            paciente: sThis.datosST_6.paciente,
-            patron: sThis.datosST_6.patron,
-            nombre_beneficiario: sThis.datosST_6.nombre_beneficiario,
-            parentesco_beneficiario: sThis.datosST_6.parentesco_beneficiario,
-            fecha_solicitud: sThis.datosST_6.fecha_solicitud, // fechale solicitud del dictamen
-            medico: sThis.datosST_6.medico,
-            auo: sThis.datosST_6.auo,
-            firma_trabajador: sThis.datosST_6.firma_trabajador, //si / no        
-            copia_entregada: sThis.datosST_6.copia_entregada, // si / no 
-            fecha_copia_entregada: sThis.datosST_6.fecha_copia_entregada,
-            fecha_inicio: sThis.datosST_6.fecha_inicio,
-            archivo: sThis.datosST_6.archivo
+            Tipo: sThis.datosST_6.tipo,
+            Folio: sThis.datosST_6.folio,
+            Patron: sThis.datosST_6.patron,
+            Paciente: sThis.datosST_6.paciente,
+            Nombre_beneficiario: sThis.datosST_6.nombre_beneficiario,
+            Parentesco_beneficiario: sThis.datosST_6.parentesco_beneficiario,
+            Fecha_solicitud: sThis.datosST_6.fecha_solicitud, // fechale solicitud del dictamen
+            Medico: sThis.datosST_6.medico,
+            Auo: sThis.datosST_6.auo,
+            Firma_trabajador: sThis.datosST_6.firma_trabajador, //si / no        
+            Copia_entregada: sThis.datosST_6.copia_entregada, // si / no 
+            Fecha_copia_entregada: sThis.datosST_6.fecha_copia_entregada,
+            Fecha_inicio: sThis.datosST_6.fecha_inicio,
+            Archivo: sThis.datosST_6.archivo
         }
     }
     return {

@@ -84,18 +84,18 @@ var ST_4_rev = function() {
     muestra_todo = function() {
         return {
             id: sThis.datosST_4.id,
-            tipo: sThis.datosST_4.tipo,
-            folio: sThis.datosST_4.folio,
-            paciente: sThis.datosST_4.paciente,
-            st4_previa: sThis.datosST_4.st4_previa,
-            fecha_realizacion: sThis.datosST_4.fecha_realizacion,
-            medico: sThis.datosST_4.medico,
-            auo: sThis.datosST_4.auo,
-            firma_trabajador: sThis.datosST_4.firma_trabajador, //si / no        
-            copia_entregada: sThis.datosST_4.copia_entregada, // si / no 
-            fecha_copia_entregada: sThis.datosST_4.fecha_copia_entregada,
-            fecha_inicio: sThis.datosST_4.fecha_inicio,
-            archivo: sThis.datosST_4.archivo
+            Tipo: sThis.datosST_4.tipo,
+            Folio: sThis.datosST_4.folio,
+            Paciente: sThis.datosST_4.paciente,
+            St4_previa: sThis.datosST_4.st4_previa,
+            Fecha_realizacion: sThis.datosST_4.fecha_realizacion,
+            Medico: sThis.datosST_4.medico,
+            Auo: sThis.datosST_4.auo,
+            Firma_trabajador: sThis.datosST_4.firma_trabajador, //si / no        
+            Copia_entregada: sThis.datosST_4.copia_entregada, // si / no 
+            Fecha_copia_entregada: sThis.datosST_4.fecha_copia_entregada,
+            Fecha_inicio: sThis.datosST_4.fecha_inicio,
+            Archivo: sThis.datosST_4.archivo
         };
     };
     return {

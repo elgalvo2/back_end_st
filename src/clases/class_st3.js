@@ -16,18 +16,12 @@ var ST_3 = function() {
         fecha_inicio: "",
         archivo: ""
     };
-    getAntecedente = function() {
-        return sThis.datosST_3.antecedente;
-    };
-    setAntecedente = function(antecedente) {
-        sThis.datosST_3.antecedente = antecedente;
-    };
-    setFecha_antecedente = function(fecha_a) {
-        sThis.datosST_3.fecha_antecedente = fecha_a;
-    }
     getFecha_antecedente = function() {
         return sThis.datosST_3.fecha_antecedente;
-    }
+    };
+    setFecha_antecedente = function(antecedente) {
+        sThis.datosST_3.fecha_antecedente = antecedente;
+    };
     getId = function() {
         return sThis.datosST_3.id;
     }
@@ -96,21 +90,22 @@ var ST_3 = function() {
     };
     muestra_todo = function() {
         return {
-            antecedente: sThis.datosST_3.antecedente,
-            fecha_antecedente: sThis.datosST_3.fecha_antecedente,
+            
+            
             id: sThis.datosST_3.id,
-            tipo: sThis.datosST_3.tipo,
-            folio: sThis.datosST_3.folio,
-            paciente: sThis.datosST_3.paciente,
-            antecedente: sThis.datosST_3.antecedente,
-            fecha_realizacion: sThis.datosST_3.fecha_realizacion,
-            medico: sThis.datosST_3.medico,
-            auo: sThis.datosST_3.auo,
-            firma_trabajador: sThis.datosST_3.firma_trabajador, //si / no        
-            copia_entregada: sThis.datosST_3.copia_entregada, // si / no 
-            fecha_copia_entregada: sThis.datosST_3.fecha_copia_entregada,
-            fecha_inicio: sThis.datosST_3.fecha_inicio,
-            archivo: sThis.datosST_3.archivo
+            Tipo: sThis.datosST_3.tipo,
+            Folio: sThis.datosST_3.folio,
+            Paciente: sThis.datosST_3.paciente,
+            Antecedente: sThis.datosST_3.antecedente,
+            Fecha_antecedente: sThis.datosST_3.fecha_antecedente,
+            Fecha_realizacion: sThis.datosST_3.fecha_realizacion,
+            Medico: sThis.datosST_3.medico,
+            Auo: sThis.datosST_3.auo,
+            Firma_trabajador: sThis.datosST_3.firma_trabajador, //si / no        
+            Copia_entregada: sThis.datosST_3.copia_entregada, // si / no 
+            Fecha_copia_entregada: sThis.datosST_3.fecha_copia_entregada,
+            Fecha_inicio: sThis.datosST_3.fecha_inicio,
+            Archivo: sThis.datosST_3.archivo
         };
     };
     return {

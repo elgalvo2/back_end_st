@@ -11,7 +11,8 @@ modelos['st4'] = schemas.st4_model;
 modelos['st4_rev'] = schemas.st4_rev_model;
 modelos['st6'] = schemas.st6_model;
 modelos['st7'] = schemas.st7_model;
-modelos['st8'] = schemas.st8_model;
+modelos['st8_st7'] = schemas.st87_model;
+modelos['st8_st9'] = schemas.st89_model;
 modelos['st9'] = schemas.st9_model;
 modelos['cita'] = schemas.cita_model;
 

@@ -87,18 +87,18 @@ var ST_4 = function() {
     };
     devuelve_todo = function() {
         return {
-            tipo: sThis.datosST_4.tipo,
             id: sThis.datosST_4.id,
-            folio: sThis.datosST_4.folio,
-            paciente: sThis.datosST_4.paciente,
-            fecha_realizacion: sthis.datosST_4.fecha_realizacion,
-            medico: sThis.datosST_4.medico,
-            auo: sthis.datosST_4.auo,
-            firma_trabajador: sThis.datosST_4.firma_trabajador, //si / no        
-            copia_entregada: sThis.datosST_4.copia_entregada,
-            fecha_copia_entregada: sThis.datosST_4.fecha_copia_entregada,
-            fecha_inicio: sThis.datosST_4.fecha_inicio,
-            archivo: sThis.datosST_4.archivo
+            Tipo: sThis.datosST_4.tipo,
+            Folio: sThis.datosST_4.folio,
+            Paciente: sThis.datosST_4.paciente,
+            Fecha_realizacion: sthis.datosST_4.fecha_realizacion,
+            Medico: sThis.datosST_4.medico,
+            Auo: sthis.datosST_4.auo,
+            Firma_trabajador: sThis.datosST_4.firma_trabajador, //si / no        
+            Copia_entregada: sThis.datosST_4.copia_entregada,
+            Fecha_copia_entregada: sThis.datosST_4.fecha_copia_entregada,
+            Fecha_inicio: sThis.datosST_4.fecha_inicio,
+            Archivo: sThis.datosST_4.archivo
         }
     }
     return {

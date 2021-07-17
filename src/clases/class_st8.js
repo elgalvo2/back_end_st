@@ -85,18 +85,16 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     };
     devuelve_todo = function() {
         return {
-            id: sThis.datosST_8.id,
-            tipo: sThis.datosST_8.tipo,
-            tipo_antecedente: sThis.datosST_8.tipo_antecedente,
-            fecha_antecedente: sThis.datosST_8.fecha_antecedente,
-            antecedente: sThis.datosST_8.antecedente, // st7 o st9
-            fecha_recaida: sThis.datosST_8.fecha_recaida,
-            se_acepta_recaida: sThis.datosST_8.se_acepta_recaida, //se acepta recaida si / no
-            medico: sThis.datosST_8.medico,
-            auo: sThis.datosST_8.auo,
-            copia_entregada: sThis.datosST_8.copia_entregada, // si / no 
-            fecha_copia_entregada: sThis.datosST_8.fecha_copia_entregada,
-            archivo: sThis.datosST_8.archivo
+            Tipo: sThis.datosST_8.tipo,
+            Antecedente: sThis.datosST_8.antecedente, // st7 o st9
+            Fecha_antecedente: sThis.datosST_8.fecha_antecedente,
+            Fecha_recaida: sThis.datosST_8.fecha_recaida,
+            Se_acepta_recaida: sThis.datosST_8.se_acepta_recaida, //se acepta recaida si / no
+            Medico: sThis.datosST_8.medico,
+            Auo: sThis.datosST_8.auo,
+            Copia_entregada: sThis.datosST_8.copia_entregada, // si / no 
+            Fecha_copia_entregada: sThis.datosST_8.fecha_copia_entregada,
+            Archivo: sThis.datosST_8.archivo
         };
     }
 

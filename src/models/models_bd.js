@@ -67,9 +67,7 @@ var ST3_rev_schema = new Schema({
     Tipo: String,
     Folio: String,
     Paciente: [Paciente_schema],
-    Revaloracion: String,
     St3_previa: [ST3_schema],
-    Antecedente: String,
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
@@ -83,9 +81,6 @@ var ST4_schema = new Schema({
     Tipo: String,
     Folio: String,
     Paciente: [Paciente_schema],
-    Revaloracion: String,
-    St4_previa: String,
-    Antecedente: [ST7_schema],
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
@@ -99,9 +94,7 @@ var ST4_rev_schema = new Schema({
     Tipo: String,
     Folio: String,
     Paciente: [Paciente_schema],
-    Revaloracion: String,
     St4_previa: [ST4_schema],
-    Antecedente: String,
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
@@ -114,7 +107,7 @@ var ST4_rev_schema = new Schema({
 
 var ST6_schema = new Schema({
     Tipo: String,
-    folio: String,
+    Folio: String,
     Patron: [Patron_schema],
     Paciente: [Paciente_schema],
     Nombre_beneficiario: String,
@@ -129,9 +122,24 @@ var ST6_schema = new Schema({
     Archivo: String
 })
 
-var ST8_schema = new Schema({
+var ST8_schema_ast7 = new Schema({
     Tipo: String,
+    Tipo_antecedente:String,
     Antecedente: [ST7_schema], // st7 o st9
+    Fecha_antecedente: String,
+    Fecha_recaida: String,
+    Se_acepta_recaida: String, //se acepta recaida si / no
+    Medico: String,
+    Auo: String,
+    Copia_entregada: String, // si / no 
+    Fecha_copia_entregada: String,
+    Archivo: String
+});
+var ST8_schema_ast9 = new Schema({
+    Tipo: String,
+    Tipo_antecedente:String,
+    Antecedente: [ST9_schema], // st7 o st9
+    Fecha_antecedente: String,
     Fecha_recaida: String,
     Se_acepta_recaida: String, //se acepta recaida si / no
     Medico: String,
@@ -144,6 +152,7 @@ var ST8_schema = new Schema({
 var ST9_schema = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
+    Oci: [Oci_schema],
     Fecha_primera_consulta: String,
     Folio_incapacidad_inicial: String,
     Fecha_incapacidad_inicial: String,
@@ -184,7 +193,8 @@ const models = {
     st4_rev_model: model('st4_rev_schema', ST4_rev_schema),
     st6_model: model('st6_schema', ST6_schema),
     st7_model: model('st7_schema', ST7_schema),
-    st8_model: model('st8_schema', ST8_schema),
+    st87_model: model('st8_schema', ST8_schema_ast7),
+    st89_model: model('st8_schema', ST8_schema_ast9),
     st9_model: model('st9_schema', ST9_schema),
 
     //------- Modelo de citas
