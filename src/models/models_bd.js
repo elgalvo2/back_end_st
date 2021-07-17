@@ -57,8 +57,8 @@ var ST3_schema = new Schema({
     Fecha_realizacion: String,
     Medico: String,
     Auo: String,
-    Firma_trabajdor: Boolean,
-    Copia_entregada: Boolean,
+    Firma_trabajdor: String,
+    Copia_entregada: String,
     Fecha_copia_entregada: String,
     Fecha_inicio: String,
     Archivo: String

@@ -1,3 +1,6 @@
+// es necesario validar las peticiones desde el front ende ---- > ver README
+
+
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');

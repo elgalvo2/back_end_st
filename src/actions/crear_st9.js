@@ -1,4 +1,4 @@
-const ST9 = require('.../clases/class_st9');
+const ST9 = require('../clases/class_st9');
 
 var st9 = ST9();
 var crear_st9 = function(d_documento, d_paciente, d_oci) {

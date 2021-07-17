@@ -95,7 +95,7 @@ var ST_6 = function() {
     setFecha_inicio = function(fecha_ini) {
         sThis.datosST_6.fecha_inicio = fecha_ini;
     };
-    devuelve_todo = function() {
+    muestra_todo = function() {
         return {
             id: sThis.datosST_6.id,
             Tipo: sThis.datosST_6.tipo,
@@ -115,7 +115,7 @@ var ST_6 = function() {
         }
     }
     return {
-        devuelve_todo: devuelve_todo,
+        muestra_todo: muestra_todo,
         setId: setId,
         getId: getId,
         getArchivo: getArchivo,

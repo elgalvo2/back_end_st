@@ -12,8 +12,8 @@ var crear_st6 = function(d_st6, d_paciente, d_patron) {
     st6.setMedico(d_st6.medico);
     st6.setAuo(d_st6.auo);
     st6.setFecha_copia_entregada(d_st6.fecha_copia_entregada, d_st6.firma_trabajador, d_st6.copia_entregada);
-    st6.setFecha_inicio(d_st3.fecha_inicio);
-    st6.setArchivo(d_st3.archivo);
+    st6.setFecha_inicio(d_st6.fecha_inicio);
+    st6.setArchivo(d_st6.archivo);
 
     return st6;
 };

@@ -4,7 +4,7 @@ const router = express.Router();
 // Task Model
 
 // GET all Tasks
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {  // obtener todas las citas es para pruebas
     const obtener_todo = require('../consultas_db/obtener_todo');
     const todo = await obtener_todo('cita');
     res.json(todo);
@@ -17,15 +17,22 @@ router.get('/:id',async(req,res)=>{         // buscar id de cita para actualizar
 
 });
 
-router.put('/',async(req,res)=>{
+router.post('/',async(req,res)=>{
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
     const respuesta = crear_cita(par);
     res.json(respuesta);
+})
+
+
+
+
+router.put('/',async(req,res)=>{
+    
 });
 
 router.put('/:id',async(req,res)=>{ // id de la cita donde se actualiza el documento
-    const actualizar_documento = require('../actions/actualizar_documento');
+    /*const actualizar_documento = require('../actions/actualizar_documento');
     const actualizar_antecedente = require('../actions/actualizar_antecedente');
     const guardar_cita_reg = require('../actions/guardar_cita_reg');
     
@@ -33,7 +40,7 @@ router.put('/:id',async(req,res)=>{ // id de la cita donde se actualiza el docum
       
     }
     const actualizado = await actualizar_documento('cita',req.params);
-
+    */
     
 })
 

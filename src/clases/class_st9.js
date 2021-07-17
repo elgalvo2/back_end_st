@@ -14,7 +14,12 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         fecha_copia_entregada: "",
         archivo: ""
     };
-
+    setTipo = function(ti){
+        sThis.datosST_9.tipo = ti;
+    };
+    getTipo = function(){
+        return sThis.datosST_9.tipo;
+    }
     setOci = function(OCI) {
         sThis.datosST_9.oci = OCI;
     }
@@ -100,6 +105,8 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         }
     }
     return {
+        setTipo:setTipo,
+        getTipo:getTipo,
         getId: getId,
         setId: setId,
         getOci: getOci,
