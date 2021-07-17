@@ -7,10 +7,11 @@ const obtener_antecedente = async function(param){
         const antecedente_obtenido = await modelo.findOne({"Paciente.No_seguro":param.no_seguro,"Fecha_accidente":param.fecha_antecedente});
         return antecedente_obtenido;
     }else if(param.tipo == 'st3_rev'){
-        const modelo = models['st3_rev'];
+        const modelo = models['st3'];
         console.log(param.no_seguro);
-        const antecedente_obtenido = await modelo.findOne({"Paciente.No_seguro":param.no_seguro},{"Paciente.Nombre":param.nombre});
-        return antecedente_obtenido;
+        const antecedente_obtenido = await modelo.findOne({"Paciente.No_seguro":param.no_seguro},{"Antecedente.fecha_accidente":param.fecha_accidente});
+        
+        return "antecedente_obtenido";
     }else{
         return "aqui no hay nada";
     }
