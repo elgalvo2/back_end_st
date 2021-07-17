@@ -120,7 +120,20 @@ var ST6_schema = new Schema({
     Fecha_copia_entregada: String,
     Fecha_inicio: String,
     Archivo: String
-})
+});
+var ST9_schema = new Schema({
+    Tipo: String,
+    Paciente: [Paciente_schema],
+    Oci: [Oci_schema],
+    Fecha_primera_consulta: String,
+    Folio_incapacidad_inicial: String,
+    Fecha_incapacidad_inicial: String,
+    Medico: String,
+    Auo: String,
+    Copia_entregada: String, // si / no 
+    Fecha_copia_entregada: String,
+    Archivo: String
+});
 
 var ST8_schema_ast7 = new Schema({
     Tipo: String,
@@ -149,20 +162,6 @@ var ST8_schema_ast9 = new Schema({
     Archivo: String
 });
 
-var ST9_schema = new Schema({
-    Tipo: String,
-    Paciente: [Paciente_schema],
-    Oci: [Oci_schema],
-    Fecha_primera_consulta: String,
-    Folio_incapacidad_inicial: String,
-    Fecha_incapacidad_inicial: String,
-    Medico: String,
-    Auo: String,
-    Copia_entregada: String, // si / no 
-    Fecha_copia_entregada: String,
-    Archivo: String
-});
-
 var Cita_schema = new Schema({
     Auo: String,
     Hora: String,
@@ -176,7 +175,8 @@ var Cita_schema = new Schema({
     St4: [ST4_schema],
     St4_rev: [ST4_rev_schema],
     St6: [ST6_schema],
-    St8: [ST8_schema],
+    St87: [ST8_schema_ast7],
+    St89: [ST8_schema_ast9],
     St9: [ST9_schema],
 });
 
@@ -193,8 +193,8 @@ const models = {
     st4_rev_model: model('st4_rev_schema', ST4_rev_schema),
     st6_model: model('st6_schema', ST6_schema),
     st7_model: model('st7_schema', ST7_schema),
-    st87_model: model('st8_schema', ST8_schema_ast7),
-    st89_model: model('st8_schema', ST8_schema_ast9),
+    st87_model: model('st87_schema', ST8_schema_ast7),
+    st89_model: model('st89_schema', ST8_schema_ast9),
     st9_model: model('st9_schema', ST9_schema),
 
     //------- Modelo de citas

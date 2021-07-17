@@ -208,7 +208,7 @@ const crear_cita = async function(d_documento) {
         const cit = await guardar_registro("cita", g_cita)
                 
         console.log(datos_st7_creada)
-        const reg_g = await guardar_cita_reg(cit._id,datos_st7_creada)
+        const reg_g = await guardar_cita_reg(cit._id,datos_st7_creada);
            
 
     } else if (d_documento == "st8") {
