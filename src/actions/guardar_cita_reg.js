@@ -36,12 +36,21 @@ const guardar_cita_reg = async (id, registro) => {
         return "St4 agregado al registro de la cita";
 
     }else if(registro.Tipo == 'st4_rev'){
+
         await modelo.findOneAndUpdate({"_id":id},{"St4_rev":registro});
         return "St4_rev agregado al registro de la cita";
     }else if(registro.Tipo == 'st8'){
-        await modelo.findOneAndUpdate({"_id":id},{"St8":registro});
-        return "St8 agregado al registro de la cita";
 
+        if(registro.Tipo_antecedente=='st7'){
+            await modelo.findOneAndUpdate({"_id":id},{"St87":registro});
+            return "St8 agregado al registro de la cita";
+        }else if(registro.Tipo_antecedente=='st9'){
+            console.log("estas aqui")
+            await modelo.findOneAndUpdate({"_id":id},{"St89":registro});
+            return "St8 agregado al registro de la cita";
+        }else{
+            return "No se hizo nada";
+        }
     };
     
     

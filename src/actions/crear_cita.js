@@ -2,33 +2,9 @@ var Cita = require('../clases/class_cita')
 var guardar_registro = require('../consultas_db/guardar_registro');
 var buscar_id = require('../consultas_db/buscar_id');
 var guardar_cita_reg = require('../actions/guardar_cita_reg');
-// Script para crear clase desde la opcion de generar cita
-
-// recibira JSON de cita y del documento 
-// d_auo: datos del auo
-// d_cita: contienen los datos de la crear_cita
-// d_documento: tiene los datos del documento a guardar
-// d_paciente: contiene los datos del paciente
 
 
 const crear_cita = async function(d_documento) {
-
-    /*var d_patron = p_patron || (p_patron = {
-        razon_social: "",
-        registro_patronal: "",
-        direccion: ""
-    });
-
-    var d_oci = p_oci || (p_oci = {
-        id: "",
-        serie: "",
-        tipo: "oci",
-        fecha_incapacidad: "",
-        nombre_paciente: "",
-        no_seguro: "",
-        archivo: ""
-    });
-*/
 
     var cita = Cita();
     cita.setAuo(d_documento.auo);
@@ -38,13 +14,7 @@ const crear_cita = async function(d_documento) {
     cita.setNota(d_documento.nota);
     cita.setTipo(d_documento.tipo);
 
-    //var crear_paciente = require('./crear_paciente');
-    //var crear_patron = require('./crear_patron');
-    //var crear_oci = require('./crear_oci');
-    //const patron = crear_patron(d_patron).muestra_todo();
-    //const paciente = crear_paciente(d_paciente).muestra_todo();
-    //const oci = crear_oci(d_oci).muestra_todo();
-
+   
 
 
     if (d_documento.tipo == "st3") {
@@ -68,13 +38,11 @@ const crear_cita = async function(d_documento) {
        
         guardar_registro(d_documento.tipo, datos_st3); // guarda el registro
 
-        cita.setDocumento(datos_st3); // vincula el documento a la cita creada
+        cita.setDocumento(datos_st3,'st3'); // vincula el documento a la cita creada
         const g_cita = cita.muestra_todo(); // obtiene json
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        const reg_g = await guardar_cita_reg(cit._id,datos_st3);
-        console.log(reg_g);
 
     } else if (d_documento.tipo == "st3_rev") {
 
@@ -100,15 +68,11 @@ const crear_cita = async function(d_documento) {
         
         console.log(mensaje);
 
-        cita.setDocumento(datos_st3_rev);
+        cita.setDocumento(datos_st3_rev,'st3_rev');
 
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro('cita',g_cita);
-
-        const reg_g = await guardar_cita_reg(cit._id,datos_st3_rev);
-
-        console.log(reg_g);
 
 
        
@@ -128,13 +92,11 @@ const crear_cita = async function(d_documento) {
         const datos_st4 = st4_creada.muestra_todo();
         guardar_registro(d_documento.tipo, datos_st4);
 
-        cita.setDocumento(datos_st4);
+        cita.setDocumento(datos_st4,'st4');
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        const reg_g = await guardar_cita_reg(cit._id,datos_st4);
-        console.log(reg_g);
 
     } else if (d_documento.tipo == "st4_rev") {
 
@@ -157,12 +119,10 @@ const crear_cita = async function(d_documento) {
        
         guardar_registro(d_documento.tipo, datos_st4_rev); // guarda el registro
 
-        cita.setDocumento(datos_st4_rev); // vincula el documento a la cita creada
+        cita.setDocumento(datos_st4_rev,'st4_rev'); // vincula el documento a la cita creada
         const g_cita = cita.muestra_todo(); // obtiene json
 
-        const cit = await guardar_registro("cita", g_cita)
-                
-        const reg_g = await guardar_cita_reg(cit._id,datos_st4_rev);
+        const cit = await guardar_registro("cita", g_cita);
 
 
     } else if (d_documento.tipo == "st6") {
@@ -185,7 +145,7 @@ const crear_cita = async function(d_documento) {
 
         guardar_registro(d_documento.tipo, datos_st6);
 
-        cita.setDocumento(datos_st6);
+        cita.setDocumento(datos_st6,'st6');
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro("cita", g_cita)
@@ -218,7 +178,7 @@ const crear_cita = async function(d_documento) {
         const datos_st7_creada = st7_creada.muestra_todo();
         guardar_registro(d_documento.tipo, datos_st7_creada);
 
-        cita.setDocumento(datos_st7_creada);
+        cita.setDocumento(datos_st7_creada,'st7');
 
         const g_cita = cita.muestra_todo();
 
@@ -235,7 +195,6 @@ const crear_cita = async function(d_documento) {
         const paciente = crear_paciente(d_documento);
         const d_paciente = paciente.muestra_todo();
 
-        
 
         const St8 = require('../actions/crear_st8');
         const obtener_antecedente = require('../actions/obtener_antecedente');
@@ -258,19 +217,16 @@ const crear_cita = async function(d_documento) {
 
            
 
-            cita.setDocumento(datos_st8);
+            cita.setDocumento(datos_st8,'st87');
+            
             const g_cita = cita.muestra_todo();
-
+            
             const cit = await guardar_registro('cita',g_cita);
-
-            const reg_g = await guardar_cita_reg(cit._id,datos_st8);
-            console.log(reg_g);
 
 
         } else if (d_documento.tipo_antecedente == "st9") {
             
             const d_antecedente = await obtener_antecedente(d_documento);
-
 
             const st8_creada = St8(d_documento, d_antecedente,d_paciente);
 
@@ -278,18 +234,13 @@ const crear_cita = async function(d_documento) {
 
 
             const datos_st8 = st8_creada.muestra_todo();
-
             const mensaje = await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
 
-            console.log(mensaje);
+            cita.setDocumento(datos_st8,'st89');
 
-            cita.setDocumento(datos_st8);
             const g_cita = cita.muestra_todo();
-
+    
             const cit = await guardar_registro('cita',g_cita);
-
-            const reg_g = await guardar_cita_reg(cit._id,datos_st8);
-            console.log(reg_g);
 
         } else {
             return 0;
@@ -299,6 +250,7 @@ const crear_cita = async function(d_documento) {
 
         var crear_oci = require('../actions/crear_oci'); // crear oci
         const oci = crear_oci();
+
         oci.setSerie(d_documento.serie);
         oc = oci.muestra_todo();
 
@@ -316,18 +268,15 @@ const crear_cita = async function(d_documento) {
         guardar_registro(d_documento.tipo, datos_st9_creada);
         console.log(datos_st9_creada);
         
-        cita.setDocumento(datos_st9_creada);
+        cita.setDocumento(datos_st9_creada,'st9');
 
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        const reg_g = await guardar_cita_reg(cit._id,datos_st9_creada);
-        console.log(reg_g);
-
         
 
-        return 1;
+        
     } else {
         return 0;
     };

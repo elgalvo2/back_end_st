@@ -167,7 +167,7 @@ var ST8_schema_ast9 = new Schema({
 var Cita_schema = new Schema({
     Auo: String,
     Hora: String,
-    Fecha: String,
+    Fecha: Date,
     Doc_completa: String,
     Nota: String,
     Tipo:String,
@@ -179,7 +179,7 @@ var Cita_schema = new Schema({
     St6: [ST6_schema],
     St87: [ST8_schema_ast7],
     St89: [ST8_schema_ast9],
-    St9: [ST9_schema],
+    St9: [ST9_schema]
 });
 
 const models = {

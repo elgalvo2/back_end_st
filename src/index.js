@@ -1,9 +1,9 @@
 // es necesario validar las peticiones desde el front ende ---- > ver README
-
-
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+
+
 
 const app = express();
 
@@ -17,8 +17,10 @@ app.set('port', 3000);
 app.use(morgan('dev'));
 app.use(express.json());
 
+
 // Routes
 app.use('/api/citas', require('./routes/citas.routes'));
+app.use('/api/ingresar', require('./routes/ingresar.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));;
