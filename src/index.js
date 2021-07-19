@@ -19,6 +19,7 @@ app.use(express.json());
 
 
 // Routes
+app.use('/api/home',require('./routes/home.routes'))
 app.use('/api/citas', require('./routes/citas.routes'));
 app.use('/api/ingresar', require('./routes/ingresar.routes'));
 app.use('/api/generar',require('./routes/generar.routes'));

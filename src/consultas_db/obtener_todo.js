@@ -11,25 +11,6 @@ var obtener_todo = async(clase) => {
     var modelo = models[clase];
     const aguardar = await modelo.find();
     return aguardar;
-    
-
-    // una function alterna
-
-    /*
-    const cantidad = await documents_array.length;
-    (async function(cantidad){
-        let ids = new Array(cantidad);
-    if (cantidad === 0) {
-        console.log("No hay registros con esos parametros...");
-        return 1;
-    } else {
-        for (var i = 0; i < cantidad; i++) {
-            ids[i] = documents_array[i]._id;
-        };
-        return ids;
-    };
-    })()
-    */
 
 };
 

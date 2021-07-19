@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const actualizar_oci = async function(registro){
     const model = models['oci'];
-    const actualizado = model.findOneAndUpdate({"_id":registro._id},{"$set":{"Archivo":"oci relacionada"
+    const actualizado = await model.findOneAndUpdate({"_id":registro._id},{"$set":{"Archivo":"oci relacionada"
     }},{new:true});
     return actualizado;
 };

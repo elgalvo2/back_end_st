@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const obtener_registros = async(clase, param) => {
     const modelo = models[clase];
 
-    const documentos_obtenidos = modelo.find({$and:[{"No_seguro":param},{"Archivo":"oci en existencia"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
+    const documentos_obtenidos = await modelo.find({$and:[{"No_seguro":param},{"Archivo":"oci en existencia"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
     
 
     return documentos_obtenidos;

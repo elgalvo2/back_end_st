@@ -32,7 +32,7 @@ router.post('/',async(req,res)=>{   /// El front end debe enviar no_serie , nomb
         res.json(doct_actualizado);
     }else{
 
-        
+
         const obtener_registro_oci = require('../consultas_db/obtener_registros');  
         obtenido_oci = await obtener_registro_oci('oci',req.body.no_seguro);
 
@@ -40,7 +40,7 @@ router.post('/',async(req,res)=>{   /// El front end debe enviar no_serie , nomb
             const models = require('../consultas_db/obtener_modelo');
             const modelo = models[req.body.tipo];
 
-            const obtenido_oci_2 = modelo.find({$and:[{"No_seguro":param},{"Archivo":"oci en existencia"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
+            const obtenido_oci_2 = await modelo.find({$and:[{"No_seguro":param},{"Archivo":"oci en existencia"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
 
             const oci_actualizada = await actualizar_oci(obtenido_oci_2[0]);
 
