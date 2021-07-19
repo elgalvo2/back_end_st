@@ -27,7 +27,7 @@ router.get('/:id',async(req,res)=>{         // buscar id de cita para actualizar
 router.post('/',async(req,res)=>{   /// ingresar la cita nuev
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
-    const respuesta = crear_cita(par);
+    const respuesta = await crear_cita(par);
     res.json(respuesta);
 });
 

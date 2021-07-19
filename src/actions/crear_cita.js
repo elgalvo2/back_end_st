@@ -41,7 +41,8 @@ const crear_cita = async function(d_documento) {
         cita.setDocumento(datos_st3,'st3'); // vincula el documento a la cita creada
         const g_cita = cita.muestra_todo(); // obtiene json
 
-        const cit = await guardar_registro("cita", g_cita)
+        const cit = await guardar_registro("cita", g_cita);
+        return cit;
                 
 
     } else if (d_documento.tipo == "st3_rev") {
@@ -63,10 +64,8 @@ const crear_cita = async function(d_documento) {
 
         const datos_st3_rev = st3_rev_creada.muestra_todo();
 
-        console.log(datos_st3_rev);
         const mensaje = await guardar_registro(d_documento.tipo, datos_st3_rev);
         
-        console.log(mensaje);
 
         cita.setDocumento(datos_st3_rev,'st3_rev');
 
@@ -74,6 +73,7 @@ const crear_cita = async function(d_documento) {
 
         const cit = await guardar_registro('cita',g_cita);
 
+        return cit;
 
        
 
@@ -96,7 +96,7 @@ const crear_cita = async function(d_documento) {
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro("cita", g_cita)
-                
+        return cit;
 
     } else if (d_documento.tipo == "st4_rev") {
 
@@ -123,6 +123,7 @@ const crear_cita = async function(d_documento) {
         const g_cita = cita.muestra_todo(); // obtiene json
 
         const cit = await guardar_registro("cita", g_cita);
+        return cit;
 
 
     } else if (d_documento.tipo == "st6") {
@@ -150,15 +151,14 @@ const crear_cita = async function(d_documento) {
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        const reg_g = await guardar_cita_reg(cit._id,datos_st6);
-        console.log(reg_g);
+        return cit;
 
 
     } else if (d_documento.tipo == "st7") {
 
         var crear_oci = require('../actions/crear_oci');
-        const oci = crear_oci();
-        oci.setSerie(d_documento.serie);
+        const oci = crear_oci(d_documento);
+        //oci.setSerie(d_documento.serie);
         oc = oci.muestra_todo();
 
         const crear_patron = require('../actions/crear_patron');
@@ -184,8 +184,7 @@ const crear_cita = async function(d_documento) {
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        const reg_g = await guardar_cita_reg(cit._id,datos_st7_creada);
-        console.log(reg_g);
+        return cit;
 
            
 
@@ -223,6 +222,7 @@ const crear_cita = async function(d_documento) {
             
             const cit = await guardar_registro('cita',g_cita);
 
+            return cit;
 
         } else if (d_documento.tipo_antecedente == "st9") {
             
@@ -242,8 +242,10 @@ const crear_cita = async function(d_documento) {
     
             const cit = await guardar_registro('cita',g_cita);
 
+            return cit;
+
         } else {
-            return 0;
+            return "no se entendieron los parametros";
         }
 
     } else if (d_documento.tipo == "st9") {
@@ -274,11 +276,11 @@ const crear_cita = async function(d_documento) {
 
         const cit = await guardar_registro("cita", g_cita)
                 
-        
+        return cit;
 
         
     } else {
-        return 0;
+        return "no se guardo nada";
     };
 
 

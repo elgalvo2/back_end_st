@@ -23,7 +23,7 @@ const guardar_registro = async (clase, registro,aux) => {
     }else{
         var modelo = models[clase];
         const aguardar = await modelo(registro).save();
-        return "se ha guardado el documento a la base de datos";
+        return aguardar;
     };
 
     

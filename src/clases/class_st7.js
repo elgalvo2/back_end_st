@@ -15,10 +15,17 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         firma_trabajador: "", //si / no        
         copia_entregada: "", // si / no 
         fecha_copia_entregada: "",
+        aceptado:"",
         st1: "", // si / no ya calificado
         st2: "", //si  / no alta de paciente
-        Archivo: ""
+        archivo: ""
     };
+    setAceptado = function(acept){
+        sThis.datosST_7.aceptado = acept;
+    };
+    getAceptado = function(){
+        return sThis.datosST_7.aceptado;
+    }
     setId = function(ID) {
         sThis.datosST_7.id = ID;
     }
@@ -32,10 +39,10 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         return sThis.datosST_7.Oci;
     }
     getArchivo = function() {
-        return sThis.datosST_7.Archivo;
+        return sThis.datosST_7.archivo;
     };
     setArchivo = function(archi) {
-        sThis.datosST_7.Archivo = archi;
+        sThis.datosST_7.archivo = archi;
     };
     getCita = function() {
         return sThis.datosST_7.cita;
@@ -142,9 +149,10 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
             Firma_trabajador: sThis.datosST_7.firma_trabajador, //si / no        
             Copia_entregada: sThis.datosST_7.copia_entregada, // si / no 
             Fecha_copia_entregada: sThis.datosST_7.fecha_copia_entregada,
+            Aceptado:sThis.datosST_7.aceptado,
             St1: sThis.datosST_7.st1, // si / no ya calificado
             St2: sThis.datosST_7.st2, //si  / no alta de paciente
-            Archivo: sThis.datosST_7.archivo,
+            Archivo: sThis.datosST_7.archivo
 
         };
     }
@@ -183,6 +191,8 @@ var ST_7 = function() { // validaciones de fechas y datos en HTML
         setCopia_entregada: setCopia_entregada,
         getFecha_copia_entregada: getFecha_copia_entregada,
         setFecha_copia_entregada: setFecha_copia_entregada,
+        setAceptado: setAceptado,
+        getAceptado: getAceptado,
         getSt1: getSt1,
         setSt1: setSt1,
         getSt2: getSt2,

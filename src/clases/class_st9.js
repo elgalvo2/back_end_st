@@ -10,9 +10,16 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         fecha_incapacidad_inicial: "", // fecha incapacidad inicial en caso de existir // si / no
         medico: "",
         auo: "",
+        aceptado:"",
         copia_entregada: "", // si / no 
         fecha_copia_entregada: "",
         archivo: ""
+    };
+    setAceptado = function(acept){
+        sThis.datosST_9.aceptado = acept;
+    };
+    getAceptado = function(){
+        return sThis.datosST_9.aceptado;
     };
     setTipo = function(ti){
         sThis.datosST_9.tipo = ti;
@@ -99,6 +106,7 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
             Fecha_incapacidad_inicial: sThis.datosST_9.fecha_incapacidad_inicial, // fecha incapacidad inicial en caso de existir // si / no
             Medico: sThis.datosST_9.medico,
             Auo: sThis.datosST_9.auo,
+            Aceptado: sthis.datosST_9.aceptado,
             Copia_entregada: sThis.datosST_9.copia_entregada, // si / no 
             Fecha_copia_entregada: sThis.datosST_9.fecha_copia_entregada,
             Archivo: sThis.datosST_9.archivo
@@ -126,6 +134,8 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         setMedico: setMedico,
         getAuo: getAuo,
         setAuo: setAuo,
+        setAceptado: setAceptado,
+        getAceptado: getAceptado,
         getCopia_entregada: getCopia_entregada,
         setCopia_entregada: setCopia_entregada,
         getFecha_copia_entregada: getFecha_copia_entregada,

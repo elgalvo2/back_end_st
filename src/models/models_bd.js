@@ -43,6 +43,7 @@ var ST7_schema = new Schema({
     Firma_trabajador: String, //si / no        
     Copia_entregada: String, // si / no 
     Fecha_copia_entregada: String,
+    Aceptado: String,
     St1: String, // si / no ya calificado
     St2: String, //si  / no alta de paciente
     Archivo: String
@@ -131,6 +132,7 @@ var ST9_schema = new Schema({
     Fecha_incapacidad_inicial: String,
     Medico: String,
     Auo: String,
+    Aceptado: String,
     Copia_entregada: String, // si / no 
     Fecha_copia_entregada: String,
     Archivo: String

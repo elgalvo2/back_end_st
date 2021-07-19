@@ -21,6 +21,8 @@ app.use(express.json());
 // Routes
 app.use('/api/citas', require('./routes/citas.routes'));
 app.use('/api/ingresar', require('./routes/ingresar.routes'));
+app.use('/api/generar',require('./routes/generar.routes'));
+app.use('/api/relacionar',require('./routes/relacionar.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));;
