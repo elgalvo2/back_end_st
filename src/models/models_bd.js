@@ -127,6 +127,7 @@ var ST9_schema = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
     Oci: [Oci_schema],
+    Patron:[Patron_schema],
     Fecha_primera_consulta: String,
     Folio_incapacidad_inicial: String,
     Fecha_incapacidad_inicial: String,
@@ -170,18 +171,10 @@ var Cita_schema = new Schema({
     Auo: String,
     Hora: String,
     Fecha: Date,
+    Id_documento: String,
     Doc_completa: String,
     Nota: String,
     Tipo:String,
-    St7: [ST7_schema],
-    St3: [ST3_schema],
-    St3_rev: [ST3_rev_schema],
-    St4: [ST4_schema],
-    St4_rev: [ST4_rev_schema],
-    St6: [ST6_schema],
-    St87: [ST8_schema_ast7],
-    St89: [ST8_schema_ast9],
-    St9: [ST9_schema]
 });
 
 const models = {

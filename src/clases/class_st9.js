@@ -5,6 +5,7 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         tipo: "st9",
         paciente: {},
         oci: {},
+        patron:{},
         fecha_primera_consulta: "",
         folio_incapacidad_inicial: "", //folio de la incapacidad en caso de existir
         fecha_incapacidad_inicial: "", // fecha incapacidad inicial en caso de existir // si / no
@@ -14,6 +15,12 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         copia_entregada: "", // si / no 
         fecha_copia_entregada: "",
         archivo: ""
+    };
+    getPatron = function(){
+        return sThis.datosSt_9.patron;
+    };
+    setPatron = function(pat){
+        sThis.datosST_9.patron = pat;
     };
     setAceptado = function(acept){
         sThis.datosST_9.aceptado = acept;
@@ -101,12 +108,13 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
             Tipo: sThis.datosST_9.tipo,
             Paciente: sThis.datosST_9.paciente,
             Oci: sThis.datosST_9.oci,
+            Patron: sThis.datosST_9.patron,
             Fecha_primera_consulta: sThis.datosST_9.fecha_primera_consulta,
             Folio_incapacidad_inicial: sThis.datosST_9.folio_incapacidad_inicial, //folio de la incapacidad en caso de existir
             Fecha_incapacidad_inicial: sThis.datosST_9.fecha_incapacidad_inicial, // fecha incapacidad inicial en caso de existir // si / no
             Medico: sThis.datosST_9.medico,
             Auo: sThis.datosST_9.auo,
-            Aceptado: sthis.datosST_9.aceptado,
+            Aceptado: sThis.datosST_9.aceptado,
             Copia_entregada: sThis.datosST_9.copia_entregada, // si / no 
             Fecha_copia_entregada: sThis.datosST_9.fecha_copia_entregada,
             Archivo: sThis.datosST_9.archivo
@@ -119,6 +127,8 @@ var ST_9 = function() { // validaciones de fechas y datos en HTML
         setId: setId,
         getOci: getOci,
         setOci: setOci,
+        getPatron:getPatron,
+        setPatron:setPatron,
         muestra_todo: muestra_todo,
         getArchivo: getArchivo,
         setArchivo: setArchivo,

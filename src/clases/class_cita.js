@@ -4,19 +4,10 @@ var Cita = function() { // validaciones de fechas y datos en HTML
         auo: "",
         hora: "",
         fecha: "",
-        documento: {},
+        id_documento: "",
         doc_completa: "",
         nota: "",
-        tipo:"",
-        St7: {},
-        St3: {},
-        St3_rev: {},
-        St4: {},
-        St4_rev: {},
-        St6: {},
-        St87: {},
-        St89: {},
-        St9: {}
+        tipo:""
 
     };
     getTipo = function(){
@@ -25,32 +16,11 @@ var Cita = function() { // validaciones de fechas y datos en HTML
     setTipo = function(tip){
         sThis.datosCita.tipo = tip
     }
-    getDocumento = function() {
-        return sThis.datosCita.documento;
+    getId_documento = function() {
+        return sThis.datosCita.id_documento;
     };
-    setDocumento = function(documentos,param) {
-        if(param == "st7"){
-            sThis.datosCita.St7 = documentos;
-        }else if(param == "st3"){
-            sThis.datosCita.St3 = documentos;
-        }else if(param == 'st3_rev'){
-            sThis.datosCita.St3_rev = documentos;
-        }else if(param =='st4'){
-            sThis.datosCita.St4 = documentos;
-        }else if(param == 'st4_rev'){
-            sThis.datosCita.St4_rev = documentos;
-        }else if(param == 'st6'){
-            sThis.datosCita.St6 = documentos;
-        }else if(param =='st87'){
-            sThis.datosCita.St87 = documentos;
-        }else if(param== 'st89'){
-            sThis.datosCita.St89 = documentos;
-        }else if(param == 'st9'){
-            sThis.datosCita.St9 = documentos;
-        }else{
-            return 1;
-        }
-            
+    setId_documento = function(document) {
+        sThis.datosCita.id_documento = document;
     };
 
     getAuo = function() {
@@ -88,33 +58,23 @@ var Cita = function() { // validaciones de fechas y datos en HTML
         sThis.datosCita.nota = nota;
     };
 
-
-
     muestra_todo = function() {
         return {
             Auo: sThis.datosCita.auo,
             Hora: sThis.datosCita.hora,
             Fecha: sThis.datosCita.fecha,
+            Id_documento: sThis.datosCita.id_documento,
             Doc_completa: sThis.datosCita.doc_completa,
             Nota: sThis.datosCita.nota,
-            Tipo: sThis.datosCita.tipo,
-            St7: sThis.datosCita.St7,
-            St3: sThis.datosCita.St3,
-            St3_rev: sThis.datosCita.St3_rev,
-            St4: sThis.datosCita.St4,
-            St4_rev: sThis.datosCita.St4_rev,
-            St6: sThis.datosCita.St6,
-            St87: sThis.datosCita.St87,
-            St89: sThis.datosCita.St89,
-            St9: sThis.datosCita.St9
+            Tipo: sThis.datosCita.tipo
             };
     };
     return {
         getTipo:getTipo,
         setTipo: setTipo,
         muestra_todo: muestra_todo,
-        getDocumento: getDocumento,
-        setDocumento: setDocumento,
+        getId_documento: getId_documento,
+        setId_documento: setId_documento,
         getAuo: getAuo,
         setAuo: setAuo,
         getHora: getHora,
@@ -124,7 +84,7 @@ var Cita = function() { // validaciones de fechas y datos en HTML
         getDoc_completa: getDoc_completa,
         setDoc_completa: setDoc_completa,
         getNota: getNota,
-        setNota: setNota,
+        setNota: setNota
     };
 };
 module.exports = Cita;

@@ -1,11 +1,12 @@
 const ST9 = require('../clases/class_st9');
 
 var st9 = ST9();
-var crear_st9 = function(d_documento, d_paciente, d_oci) {
+var crear_st9 = function(d_documento, d_paciente, d_oci, pat) {
     st9.setId(d_documento.id);
     st9.setTipo(d_documento.tipo);
     st9.setPaciente(d_paciente);
     st9.setOci(d_oci);
+    st9.setPatron(pat);
     st9.setFecha_primera_consulta(d_documento.fecha_primera_consulta);
     st9.setFolio_incapacidad_inicial(d_documento.folio_incapacidad_inicial);
     st9.setFecha_incapacidad_inicial(d_documento.fecha_incapacidad_inicial);
