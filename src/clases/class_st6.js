@@ -8,7 +8,7 @@ var ST_6 = function() {
         patron: {},
         nombre_beneficiario: "",
         parentesco_beneficiario: "",
-        fecha_solicitud: "", // fechale solicitud del dictamen
+        aceptado: "", // fechale solicitud del dictamen
         medico: "",
         auo: "",
         firma_trabajador: "", //si / no        
@@ -63,11 +63,11 @@ var ST_6 = function() {
     setParentesco_beneficiario = function(parentesco) {
         sThis.datosST_6.parentesco_beneficiario = parentesco;
     };
-    getFecha_solicitud = function() {
-        return sThis.datosST_6.fecha_solicitud;
+    getAceptado = function() {
+        return sThis.datosST_6.aceptado;
     };
-    setFecha_solicitud = function(fecha) {
-        sThis.datosST_6.fecha_solicitud = fecha;
+    setAceptado = function(acept) {
+        sThis.datosST_6.aceptado = acept;
     };
     getMedico = function() {
         return sThis.datosST_6.medico;
@@ -104,7 +104,7 @@ var ST_6 = function() {
             Paciente: sThis.datosST_6.paciente,
             Nombre_beneficiario: sThis.datosST_6.nombre_beneficiario,
             Parentesco_beneficiario: sThis.datosST_6.parentesco_beneficiario,
-            Fecha_solicitud: sThis.datosST_6.fecha_solicitud, // fechale solicitud del dictamen
+            Aceptado: sThis.datosST_6.aceptado, // fechale solicitud del dictamen
             Medico: sThis.datosST_6.medico,
             Auo: sThis.datosST_6.auo,
             Firma_trabajador: sThis.datosST_6.firma_trabajador, //si / no        
@@ -131,9 +131,8 @@ var ST_6 = function() {
         setNombre_beneficiario: setNombre_beneficiario,
         getParentesco_beneficiario: getParentesco_beneficiario,
         setParentesco_beneficiario: setParentesco_beneficiario,
-
-        getFecha_solicitud: getFecha_solicitud,
-        setFecha_solicitud: setFecha_solicitud,
+        getAceptado: getAceptado,
+        setAceptado: setAceptado,
         getMedico: getMedico,
         setMedico: setMedico,
         getAuo: getAuo,

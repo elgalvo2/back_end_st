@@ -19,11 +19,11 @@ app.use(express.json());
 
 
 // Routes
-app.use('/api/home',require('./routes/home.routes'))
-app.use('/api/citas', require('./routes/citas.routes'));
-app.use('/api/ingresar', require('./routes/ingresar.routes'));
-app.use('/api/generar',require('./routes/generar.routes'));
-app.use('/api/relacionar',require('./routes/relacionar.routes'));
+app.use('/api/home',require('./routes/home.routes'))  // 
+app.use('/api/citas', require('./routes/citas.routes'));  // actualizado
+app.use('/api/ingresar', require('./routes/ingresar.routes')); // verificado
+app.use('/api/generar',require('./routes/generar.routes')); 
+app.use('/api/relacionar',require('./routes/relacionar.routes')); // verificado
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));;

@@ -114,7 +114,7 @@ var ST6_schema = new Schema({
     Paciente: [Paciente_schema],
     Nombre_beneficiario: String,
     Parentesco_beneficiario: String,
-    Fecha_solicitud: String,
+    Aceptado: String,
     Medico: String,
     Auo: String,
     Firma_trabajador: String,

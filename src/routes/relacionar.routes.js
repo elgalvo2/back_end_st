@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/',async(req,res)=>{   /// Actualizar fecha de citas pasadas...
+router.get('/',async(req,res)=>{   /// Obtener la relacion de las st9 y st7 sin oci relacionada
 
     const obtener_relacion_documentos = require('../actions/obtener_relacion_documentos');
 
