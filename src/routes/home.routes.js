@@ -68,7 +68,6 @@ router.put('/citas/continuar_tramite/:id',async (req,res)=>{ //<---- id cita act
     }else{
         res.json("Nada ha funcionado");
     }
-    
 
 });
 

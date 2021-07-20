@@ -27,6 +27,8 @@ router.post('/',async(req,res)=>{   /// El front end debe enviar no_serie , nomb
         
         const oci_actualizada = await actualizar_oci(obtenido_oci[0]);
 
+        console.log(oci_actualizada);
+
         const doct_actualizado = await consulta_id_modifica(req.body.tipo,req.body._id,oci_actualizada);
         
         res.json(doct_actualizado);
