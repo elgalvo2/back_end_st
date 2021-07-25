@@ -11,7 +11,7 @@ const app = express();
 const { mongoose } = require('./database');
 
 // Settings 
-app.set('port', 3000);
+app.set('port', 5050);
 
 // Middlewares
 app.use(morgan('dev'));

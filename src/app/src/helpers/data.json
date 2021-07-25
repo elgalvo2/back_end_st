@@ -1,0 +1,29 @@
+{
+    "frameworks":[
+        {
+            "id":1,
+            "name":"React",
+            "web":"https://es.reactjs.org/"
+        },
+        {
+            "id":2,
+            "name":"Express.js",
+            "web":"https://expressjs.com/es/"
+        },
+        {
+            "id":3,
+            "name":"Angular",
+            "web":"https://angular.io/"
+        },
+        {
+            "id":4,
+            "name":"Vue",
+            "web":"https://vuejs.org/"
+        },
+        {
+            "id":5,
+            "name":"Polymer",
+            "web":"https://polymer-library.polymer-project.org/3.0/docs/devguide/feature-overview"
+        }
+    ]
+}

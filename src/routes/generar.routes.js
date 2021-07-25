@@ -13,7 +13,7 @@ router.get('/relacion_certificacion',async(req,res)=>{   /// Actualizar fecha de
 
 router.get('/solicitud_ocis',async(req,res)=>{
 
-    const obtener relacion = require('../actions/relacion_sol_oci');
+    const obtener_relacion = require('../actions/relacion_sol_oci');
     const a_solicitar = await relacion();
     res.json(a_solicitar);
 
