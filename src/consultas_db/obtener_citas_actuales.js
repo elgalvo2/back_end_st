@@ -7,6 +7,8 @@ var obtener_citas_actuales = async() => {
     var modelo = models['cita'];
 
     const fecha_actual = new Date();
+    const dia = fecha_actual.getDate();
+    fecha_actual.setDate(dia-1);
     fecha_actual.setHours(0,0,0);
 
     const citas_actuales = await modelo.find({"Fecha":{"$gte":fecha_actual}}); // futuro problemas con el front end  <<<<---------------- el fron end eviara un uso date new date devera ser una variable

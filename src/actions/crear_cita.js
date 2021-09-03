@@ -6,7 +6,7 @@ var guardar_cita_reg = require('../actions/guardar_cita_reg');
 
 const crear_cita = async function(d_documento) {
 
-    var cita = Cita();
+    const cita = Cita();
     cita.setAuo(d_documento.auo);
     cita.setHora(d_documento.hora);
     cita.setFecha(d_documento.fecha);
@@ -119,7 +119,7 @@ const crear_cita = async function(d_documento) {
        
         const doc_guardado = await guardar_registro(d_documento.tipo, datos_st4_rev); // guarda el registro
 
-        cita.setDocumento(doc_guardado._id); // vincula el documento a la cita creada
+        cita.setId_documento(doc_guardado._id); // vincula el documento a la cita creada
         const g_cita = cita.muestra_todo(); // obtiene json
 
         const cit = await guardar_registro("cita", g_cita);
@@ -146,7 +146,7 @@ const crear_cita = async function(d_documento) {
 
         const doc_guardado = await guardar_registro(d_documento.tipo, datos_st6);
 
-        cita.setDocumento(doc_guardado._id);
+        cita.setId_documento(doc_guardado._id);
         const g_cita = cita.muestra_todo();
 
         const cit = await guardar_registro("cita", g_cita)
@@ -155,6 +155,7 @@ const crear_cita = async function(d_documento) {
 
 
     } else if (d_documento.tipo == "st7") {
+
 
         var crear_oci = require('../actions/crear_oci');
         const oci = crear_oci(d_documento);
@@ -169,26 +170,46 @@ const crear_cita = async function(d_documento) {
         const paciente = crear_paciente(d_documento);
         d_paciente = paciente.muestra_todo();
         
-       
-
+        // SE BUSCA PRIMERO SI EXISTE ST7 NO RECLAMADA PARA EVITAR DUPLICAR DOCUMENTOS ST7
+        const existe_st7 = require('../actions/comprobar_st7_no_reclamada');
         const St7 = require('../actions/crear_st7');
-        var st7_creada = St7(d_documento, d_paciente, pat, oc);
-        st7_creada.setArchivo("citados");
+        console.log(d_paciente);
+        const st7_no_reclamada = await existe_st7(d_paciente.No_seguro);
 
-        const datos_st7_creada = st7_creada.muestra_todo();
-        const doc_guardado = await guardar_registro(d_documento.tipo, datos_st7_creada);
-
-        console.log(doc_guardado)
-
-        cita.setId_documento(doc_guardado._id);
-
-        const g_cita = cita.muestra_todo();
-
-        console.log(g_cita);
-
-        const cit = await guardar_registro("cita", g_cita)
+    
+            if(st7_no_reclamada.res.ok){
+                const id_st7 = st7_no_reclamada._id;
+                // modifica st7 existente
+                const modifica_st7 = require('../consultas_db/modifica_st7_no_reclamada');
+                const modificado_st7 = await modifica_st7(id_st7, d_paciente, pat, oc);
+                if(modificado_st7.res.ok){
                 
-        return cit;
+                    cita.setId_documento(modificado_st7.res.st7._id);
+                    const g_cita = cita.muestra_todo();
+                    const cit = await guardar_registro("cita", g_cita);
+                    return cit;
+                }else{
+                    var st7_creada = St7(d_documento, d_paciente, pat, oc);
+                    st7_creada.setArchivo("citados");
+
+                    const datos_st7_creada = st7_creada.muestra_todo();
+                    const doc_guardado = await guardar_registro(d_documento.tipo, datos_st7_creada);
+
+                    cita.setId_documento(doc_guardado._id);
+
+                    const g_cita = cita.muestra_todo();
+
+                    const cit = await guardar_registro("cita", g_cita)
+                            
+                    return cit;
+                    
+                }
+            
+            }
+        
+
+        
+        
 
            
 

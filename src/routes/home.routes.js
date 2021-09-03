@@ -17,13 +17,26 @@ router.put('/citas/:id',(req,res)=>{
 });
 
 
-router.put('/citas/continuar_tramite/:id',async (req,res)=>{ //<---- id cita actualizar los datos de la cita ej. cuando un cita ya es valorada
+router.post('/citas/continuar_tramite/:id',async (req,res)=>{ //<---- id cita actualizar los datos de la cita ej. cuando un cita ya es valorada
     
-    if(req.body.Tipo=='st7'){
+    if(req.body.tipo=='st7'){
+
+        
 
         const actualiza_st7 = require('../consultas_db/actualiza_st7');
         const guardado = await actualiza_st7(req.params.id,req.body);
-        res.json(guardado);
+        if(guardado.respuesta.ok){
+            const eliminar = require('../consultas_db/eliminar_cita');
+            const eliminado = await eliminar(req.body.id_cita);
+            if(eliminado.respuesta.ok){
+                res.json(guardado)
+            }else{
+                res.json(eliminado)
+            }
+        }else{
+            res.json(guardado)
+        }
+        
 
     }else if(req.body.tipo == 'st3'){
 
@@ -80,6 +93,7 @@ router.get('/citas_perdidas',async(req,res)=>{
 router.get('/colecciones/:tipo',async (req,res)=>{
     const obtener_registro = require('../consultas_db/obtener_todo');
     const obtenido = await obtener_registro(req.params.tipo);
+    console.log(obtenido);
     res.json(obtenido);
 });
 

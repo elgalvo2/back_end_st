@@ -1,5 +1,6 @@
 // es necesario validar las peticiones desde el front ende ---- > ver README
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -14,6 +15,7 @@ const { mongoose } = require('./database');
 app.set('port', 5050);
 
 // Middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 

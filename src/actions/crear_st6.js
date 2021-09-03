@@ -7,8 +7,7 @@ var crear_st6 = function(d_st6, d_paciente, d_patron) {
     st6.setFolio(d_st6.folio);
     st6.setPaciente(d_paciente);
     st6.setPatron(d_patron);
-    st6.setParentesco_beneficiario(d_st6.parentesco_beneficiario)
-    st6.setFecha_solicitud(d_st6.fecha_realizacion);
+    st6.setParentesco_beneficiario(d_st6.parentesco_beneficiario);
     st6.setMedico(d_st6.medico);
     st6.setAuo(d_st6.auo);
     st6.setFecha_copia_entregada(d_st6.fecha_copia_entregada, d_st6.firma_trabajador, d_st6.copia_entregada);

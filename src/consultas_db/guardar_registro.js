@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 
 const guardar_registro = async (clase, registro,aux) => {
     var a_aux = aux ? aux : "";  
-    console.log(a_aux);
     if(clase == 'st8'){
         if(a_aux == 'st7'){
             var modelo = models['st8_st7'];
@@ -15,7 +14,6 @@ const guardar_registro = async (clase, registro,aux) => {
         }else if(a_aux === 'st9'){
             var modelo = models['st8_st9'];
             const aguardar = await modelo(registro).save();
-            console.log(aguardar);
             return aguardar;
         }else {
             return "No se ha llegado a una conclusión"
@@ -25,6 +23,8 @@ const guardar_registro = async (clase, registro,aux) => {
         const aguardar = await modelo(registro).save();
         return aguardar;
     };
+
+
 
     
 

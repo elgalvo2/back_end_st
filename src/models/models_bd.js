@@ -141,6 +141,7 @@ var ST9_schema = new Schema({
 
 var ST8_schema_ast7 = new Schema({
     Tipo: String,
+    Paciente: [Paciente_schema],
     Tipo_antecedente:String,
     Antecedente: [ST7_schema], // st7 o st9
     Fecha_antecedente: String,
