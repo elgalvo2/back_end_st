@@ -25,14 +25,14 @@ router.post('/',async(req,res)=>{
         let st7 ={
             tipo:"st7",
             nombre: req.body.nombre,
-            apellido: req.body.apellidos,
+            apellido: req.body.apellido,
             no_seguro: req.body.no_seguro,
             fecha_accidente: req.body.fecha_accidente,
         }
         let oci ={
             tipo:"oci",
             nombre: req.body.nombre,
-            apellido: req.body.apellidos,
+            apellido: req.body.apellido,
             no_seguro: req.body.no_seguro,
             serie: req.body.serie,
         }
@@ -50,7 +50,7 @@ router.post('/',async(req,res)=>{
         let oci ={
             tipo:"oci",
             nombre: req.body.nombre,
-            apellidos: req.body.apellidos,
+            apellido: req.body.apellido,
             no_seguro: req.body.no_seguro,
             serie: req.body.serie,
         }
@@ -64,7 +64,7 @@ router.post('/',async(req,res)=>{
         let st7 ={
             tipo:"st7",
             nombre: req.body.nombre,
-            apellidos: req.body.apellidos,
+            apellido: req.body.apellido,
             no_seguro: req.body.no_seguro,
             fecha_accidente: req.body.fecha_accidente,
         }

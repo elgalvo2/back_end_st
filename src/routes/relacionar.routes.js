@@ -1,6 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
+router.post('/relacion_ocis/',async(req,res)=>{
+
+    const obtener_relacion_ocis = require('../actions/obtener_relacion_ocis');
+    const actualizar_st7 = require('../actions/actualizar_st7')
+
+    console.log(req.body.ocis);
+    
+        const ocis_obtenidas = await obtener_relacion_ocis('oci',req.body.ocis);
+        if(ocis_obtenidas.res.ok){
+            const st7_actualizada = await actualizar_st7('st7',req.body.ids,ocis_obtenidas.res.oci);
+            console.log('respuesta',st7_actualizada.res)
+            res.json(st7_actualizada.res);
+        }else{
+            console.log('respuesta',ocis_obtenidas.res)
+            res.json(ocis_obtenidas.res)
+        }
+    
+    
+})
+
 
 router.get('/',async(req,res)=>{   /// Obtener la relacion de las st9 y st7 sin oci relacionada
 

@@ -176,36 +176,45 @@ const crear_cita = async function(d_documento) {
         console.log(d_paciente);
         const st7_no_reclamada = await existe_st7(d_paciente.No_seguro);
 
+        console.log('2',st7_no_reclamada)
+
     
             if(st7_no_reclamada.res.ok){
                 const id_st7 = st7_no_reclamada._id;
                 // modifica st7 existente
                 const modifica_st7 = require('../consultas_db/modifica_st7_no_reclamada');
                 const modificado_st7 = await modifica_st7(id_st7, d_paciente, pat, oc);
+                console.log('3',modificado_st7)
                 if(modificado_st7.res.ok){
                 
                     cita.setId_documento(modificado_st7.res.st7._id);
                     const g_cita = cita.muestra_todo();
                     const cit = await guardar_registro("cita", g_cita);
+                    console.log('cit_st7 no reclamda true',cit)  
                     return cit;
                 }else{
-                    var st7_creada = St7(d_documento, d_paciente, pat, oc);
-                    st7_creada.setArchivo("citados");
-
-                    const datos_st7_creada = st7_creada.muestra_todo();
-                    const doc_guardado = await guardar_registro(d_documento.tipo, datos_st7_creada);
-
-                    cita.setId_documento(doc_guardado._id);
-
-                    const g_cita = cita.muestra_todo();
-
-                    const cit = await guardar_registro("cita", g_cita)
-                            
-                    return cit;
-                    
+                    return modificado_st7.res.respuesta;
                 }
-            
-            }
+                      
+            }else{
+                var st7_creada = St7(d_documento, d_paciente, pat, oc);
+                st7_creada.setArchivo("citados");
+
+                const datos_st7_creada = st7_creada.muestra_todo();
+                const doc_guardado = await guardar_registro(d_documento.tipo, datos_st7_creada);
+
+                cita.setId_documento(doc_guardado._id);
+
+                const g_cita = cita.muestra_todo();
+
+                
+                
+
+                const cit = await guardar_registro("cita", g_cita);
+                console.log('cit_st7 no reclamda false',cit) 
+                      
+                return cit;
+            };
         
 
         

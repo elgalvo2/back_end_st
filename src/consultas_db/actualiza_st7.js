@@ -6,14 +6,19 @@ const consulta_actualiza = async function(id,params){
     var existe_oci = false;
     var oci_en_solicitud = false;
     var oci_para_devolucion = false;
-
+     // SI ST7 ES ACEPTADO
     if(params.aceptado){
+
+        // BUSCA SI EXISTE OCI ARCHIVO:'EN EXISTENCIA'
         const modelo_oci = models['oci'];
         const oci_obtenida = await modelo_oci.findOne({'Serie':params.serie,'No_seguro':params.no_seguro});
+        console.log('acutaliza st7 params',params)
+        console.log('oci obtenida en consulta', oci_obtenida)
+        //SI EXISTE OCI
         if(oci_obtenida != null && oci_obtenida.Archivo==='oci en existencia'){
         existe_oci = true;
-        }else{
-            const oci_para_solicitud = await modelo_oci.create({
+        }else{// SI NO EXISTE OCI, SE CREA UNA PARA SOLICITAR 
+            const oci_para_solicitud = await modelo_oci.save({
                 'Serie':params.serie,
                 'Tipo':'oci',
                 'Fecha_incapacidad':'',

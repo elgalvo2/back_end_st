@@ -9,13 +9,16 @@ const mongoose = require('mongoose')
 
 const obtener_registros = async(param) => {
     const modelo = models['st7'];
-    console.log(1,param);
 
-    const documentos_obtenidos = await modelo.findOne(
-        {"Paciente.No_seguro":param},
-        {"Archivo":"st7 no reclamadas"}
-        ); // consulta y guarda todos los documentos encontrados con el parametro args
-    console.log(documentos_obtenidos);
+    const query = {"Paciente.No_seguro":param,
+    "Archivo":"st7 no reclamadas"}
+
+    const documentos_obtenidos = await modelo.findOne(query); 
+        
+        
+        
+        // consulta y guarda todos los documentos encontrados con el parametro args
+        console.log('doc obtenidos',documentos_obtenidos);
     if(documentos_obtenidos!=null){
         return{
             'res':{

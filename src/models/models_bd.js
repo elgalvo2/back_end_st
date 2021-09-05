@@ -24,11 +24,6 @@ var Oci_schema = new Schema({
 
 });
 
-
-
-
-
-
 var ST7_schema = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
@@ -142,6 +137,7 @@ var ST9_schema = new Schema({
 var ST8_schema_ast7 = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
+    Oci: [Oci_schema],
     Tipo_antecedente:String,
     Antecedente: [ST7_schema], // st7 o st9
     Fecha_antecedente: String,
@@ -156,6 +152,7 @@ var ST8_schema_ast7 = new Schema({
 var ST8_schema_ast9 = new Schema({
     Tipo: String,
     Paciente: [Paciente_schema],
+    Oci: [Oci_schema],
     Tipo_antecedente:String,
     Antecedente: [ST9_schema], // st7 o st9
     Fecha_antecedente: String,
