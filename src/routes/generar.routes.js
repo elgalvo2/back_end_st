@@ -11,6 +11,15 @@ router.get('/relacion_certificacion',async(req,res)=>{   /// Actualizar fecha de
     
 });
 
+router.post('/relacion_certificacion',async(req,res)=>{
+
+    const enviar_relacion = require('../actions/enviar_relacion_cert');
+    const obtenido = await enviar_relacion(req.body.tipo, req.body.id);
+    console.log('Esto es la respueta al post de enviar a certificar: ',obtenido);
+    res.json(obtenido);
+
+});
+
 router.get('/solicitud_ocis',async(req,res)=>{
 
     const obtener_relacion = require('../actions/relacion_sol_oci');

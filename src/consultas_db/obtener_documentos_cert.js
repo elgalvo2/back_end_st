@@ -18,14 +18,43 @@ const obtener_registros = async(param) => {
 
         const documentos_obtenidos2 = await modelo.find({$and:[{"No_seguro":param.no_seguro},{"Archivo":"enviado a certificar"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
     
-        return [documentos_obtenidos, documentos_obtenidos2];
+        const todo = documentos_obtenidos.concat(documentos_obtenidos2);
+        if(todo != null && todo.length !=0){
+            return {
+                res:{
+                    'respuesta':'Se encontraron estos documentos',
+                    'docs':todo,
+                    'ok':true
+                }
+            }
+        }else{
+            return{
+                res:{
+                    'respuesta':'No se encontraron documentos',
+                    'ok':false,
+                }
+            }
+        }
     }else{
         const modelo = models[param.tipo];
 
     const documentos_obtenidos = await modelo.find({$and:[{"No_seguro":param.no_seguro},{"Archivo":"enviado a certificar"}]}); // consulta y guarda todos los documentos encontrados con el parametro args
-    
-
-    return documentos_obtenidos;
+    if(documentos_obtenidos != null && documentos_obtenidos.length !=0){
+        return {
+            res:{
+                'respuesta':'Se encontraron estos documentos',
+                'docs':documentos_obtenidos,
+                'ok':true
+            }
+        }
+    }else{
+        return{
+            res:{
+                'respuesta':'No se encontraron documentos',
+                'ok':false,
+            }
+        }
+    }
 
     }
 };

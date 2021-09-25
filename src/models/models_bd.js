@@ -1,5 +1,6 @@
 const { model, Schema } = require('mongoose');
 
+
 var Paciente_schema = new Schema({ // agegado
     No_seguro: Number,
     Nombre: String,

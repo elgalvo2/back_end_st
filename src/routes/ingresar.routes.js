@@ -10,11 +10,25 @@ router.put('/dictamenes',async(req,res)=>{
 });
 
 router.post("/cert",async(req,res)=>{
-    console.log(req.body);
-    const obtener_cert = require('../consultas_db/obtener_documentos_cert');
-    const obtenido = await obtener_cert(req.body);
-    console.log(obtenido);
-    res.json(obtenido);
+   
+    if(req.body.no_seguro===''){
+        const obtener_cert_noss = require('../consultas_db/obtener_documentos_cert_no_ss');
+        let obtenido = await obtener_cert_noss(req.body);
+
+        res.json(obtenido);
+    }else{
+        const obtener_cert = require('../consultas_db/obtener_documentos_cert');
+        let obtenido = await obtener_cert(req.body);
+
+        res.json(obtenido);
+    }
+    
+}) 
+
+router.post("/cert/recepcion", async(req,res)=>{
+    const gestor_carpetas = require('../actions/gestor_carpetas');
+    const obtenido = gestor_carpetas(req.body);
+
 })
 
 router.post('/',async(req,res)=>{
