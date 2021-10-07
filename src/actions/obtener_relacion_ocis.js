@@ -21,7 +21,7 @@ const obtener_relacion_ocis = async(clase, param) => {
     };
 
     const documentos_obtenidos = await modelo.findOneAndUpdate(filter,update,{new:true}); // consulta y guarda todos los documentos encontrados con el parametro args
-    console.log(documentos_obtenidos);
+    console.log('DOCUEMNTOS BTENIDOS RELACION OCI',documentos_obtenidos);
     if(documentos_obtenidos!=null){
         return {
             'res':{

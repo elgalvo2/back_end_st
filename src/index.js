@@ -26,6 +26,7 @@ app.use('/api/citas', require('./routes/citas.routes'));  // actualizado
 app.use('/api/ingresar', require('./routes/ingresar.routes')); // verificado
 app.use('/api/generar',require('./routes/generar.routes')); // actualizado
 app.use('/api/relacionar',require('./routes/relacionar.routes')); // verificado
+app.use('/api/conservacion',require('./routes/conservacion.routes')); // script de libreta para registro de folios conservacion 
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));;

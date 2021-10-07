@@ -27,7 +27,9 @@ router.post("/cert",async(req,res)=>{
 
 router.post("/cert/recepcion", async(req,res)=>{
     const gestor_carpetas = require('../actions/gestor_carpetas');
-    const obtenido = gestor_carpetas(req.body);
+    const obtenido = await gestor_carpetas(req.body);
+    console.log(obtenido)
+    res.json(obtenido);
 
 })
 
@@ -54,7 +56,7 @@ router.post('/',async(req,res)=>{
         const obtenido2 = await ingresar_st7(st7);
 
         const respuesta = [obtenido,obtenido2]
-        console.log(respuesta);
+        console.log('RESPUESTA',respuesta);
 
         res.json(respuesta);
         
@@ -69,7 +71,7 @@ router.post('/',async(req,res)=>{
             serie: req.body.serie,
         }
         const obtenido = await ingresar_oci(oci);
-        console.log(obtenido);
+        console.log('Obtenido',obtenido);
 
         res.json(obtenido);
     }

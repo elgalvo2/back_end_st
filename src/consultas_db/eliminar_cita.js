@@ -7,14 +7,14 @@ const eliminar_cita = async(id)=>{
     const borrado = await modelo.deleteOne({"_id":id});
     if(borrado.deletedCount===1){
         return {
-            'respuesta':{
+            'res':{
                 "status":'cita eliminada',
                 'ok':true,
             }
         }
     }else{
         return {
-            'respuesta':{
+            'res':{
                 'status':'No se eliminó nada',
                 'ok':false,
             }

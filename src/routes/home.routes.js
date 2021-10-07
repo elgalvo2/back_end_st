@@ -28,10 +28,10 @@ router.post('/citas/continuar_tramite/:id',async (req,res)=>{ //<---- id cita ac
         const actualiza_st7 = require('../consultas_db/actualiza_st7');
         const guardado = await actualiza_st7(req.params.id,req.body);
 
-        if(guardado.respuesta.ok){
+        if(guardado.res.ok){
             const eliminar = require('../consultas_db/eliminar_cita');
             const eliminado = await eliminar(req.body.id_cita);
-            if(eliminado.respuesta.ok){
+            if(eliminado.res.ok){
                 res.json(guardado)
             }else{
                 res.json(eliminado)
