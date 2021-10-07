@@ -26,6 +26,7 @@ var Tecnico_schema = new Schema({
 var Orden_schema = new Schema({
     Folio:{type:String, required:true},
     Fecha:{type:String, required: true, default:'dd-mm-aa'},
+    Hora:{type:String, requires:true, default: 'hh:mm'},
     Descripcion: {type:String, required:true},
     Area:{type:String, required: true, default:'No definida'},
     Tecnico:[Tecnico_schema],
