@@ -137,6 +137,7 @@ var ST9_schema = new Schema({
 
 var ST8_schema_ast7 = new Schema({
     Tipo: String,
+    Patron: [Patron_schema],
     Paciente: [Paciente_schema],
     Oci: [Oci_schema],
     Tipo_antecedente:String,
@@ -152,6 +153,7 @@ var ST8_schema_ast7 = new Schema({
 });
 var ST8_schema_ast9 = new Schema({
     Tipo: String,
+    Patron: [Patron_schema],
     Paciente: [Paciente_schema],
     Oci: [Oci_schema],
     Tipo_antecedente:String,

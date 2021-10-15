@@ -45,6 +45,7 @@ router.get('/obtener/:id',async(req,res)=>{         // buscar id de cita para ac
 
 
 router.post('/',async(req,res)=>{   /// ingresar la cita nuev
+    console.log('reques', req.body);
     const crear_cita = require('../actions/crear_cita');
     const par = req.body;
     const respuesta = await crear_cita(par);

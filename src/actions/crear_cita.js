@@ -224,61 +224,45 @@ const crear_cita = async function(d_documento) {
 
     } else if (d_documento.tipo == "st8") {
 
-        var crear_paciente = require('../actions/crear_paciente'); // crear paciente
-        const paciente = crear_paciente(d_documento);
-        const d_paciente = paciente.muestra_todo();
+            var crear_paciente = require('../actions/crear_paciente'); // crear paciente
+            const paciente = crear_paciente(d_documento);
+            const d_paciente = paciente.muestra_todo();
 
 
-        const St8 = require('../actions/crear_st8');
-        const obtener_antecedente = require('../actions/obtener_antecedente');
+            const crear_patron = require('../actions/crear_patron');
+            const patron = crear_patron(d_documento);
+            pat = patron.muestra_todo();
 
-        if (d_documento.tipo_antecedente == "st7") {
-
-            
-            
-            const d_antecedente = await obtener_antecedente(d_documento);
-
-
-            const st8_creada = St8(d_documento, d_antecedente,d_paciente);
-
-            st8_creada.setArchivo("citados");
-
-
-            const datos_st8 = st8_creada.muestra_todo();
-
-            const doc_guardado = await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
-
-            cita.setId_documento(doc_guardado._id);
-            
-            const g_cita = cita.muestra_todo();
-            
-            const cit = await guardar_registro('cita',g_cita);
-
-            return cit;
-
-        } else if (d_documento.tipo_antecedente == "st9") {
-            
-            const d_antecedente = await obtener_antecedente(d_documento);
-
-            const st8_creada = St8(d_documento, d_antecedente,d_paciente);
-
-            st8_creada.setArchivo("citados");
-
-
-            const datos_st8 = st8_creada.muestra_todo();
-            const doc_guardado = await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
-
-            cita.setId_documento(doc_guardado._id);
-
-            const g_cita = cita.muestra_todo();
+            var crear_oci = require('../actions/crear_oci');
+            const oci = crear_oci(d_documento);
+            //oci.setSerie(d_documento.serie);
+            oc = oci.muestra_todo();
     
+    
+            const St8 = require('../actions/crear_st8');
+            const obtener_antecedente = require('../actions/obtener_antecedente');
+            
+            
+            const d_antecedente = await obtener_antecedente(d_documento);
+
+
+            const st8_creada = St8(d_documento, d_antecedente,d_paciente, pat, oc);
+
+            
+
+            st8_creada.setArchivo("citados");
+
+            const datos_st8 = st8_creada.muestra_todo();
+            console.log('st8_creada',datos_st8);
+            const doc_guardado = await guardar_registro(d_documento.tipo, datos_st8,d_documento.tipo_antecedente);
+
+            cita.setId_documento(doc_guardado._id);
+            
+            const g_cita = cita.muestra_todo();
+            
             const cit = await guardar_registro('cita',g_cita);
 
             return cit;
-
-        } else {
-            return "no se entendieron los parametros";
-        }
 
     } else if (d_documento.tipo == "st9") {
 

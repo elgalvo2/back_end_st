@@ -4,6 +4,8 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
         id: "",
         tipo: "st8",
         paciente: {},
+        patron: {},
+        oci:{},
         tipo_antecedente: "",
         fecha_antecedente: "",
         antecedente: {}, // st7 o st9
@@ -20,6 +22,18 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     }
     getId = function() {
         return sThis.datosST_8.id;
+    }
+    setOci = function(OCI) {
+        sThis.datosST_8.oci = OCI;
+    }
+    getOci = function() {
+        return sThis.datosST_8.oci;
+    }
+    setPatron = function (patro){
+        sThis.datosST_8.patron = patro;
+    }
+    getPatron = function(){
+        return sThis.datosST_8.patron;
     }
     setFecha_antecedente = function(fecha_a) {
         sThis.datosST_8.fecha_antecedente = fecha_a;
@@ -96,6 +110,9 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
             Tipo: sThis.datosST_8.tipo,
             Tipo_antecedente: sThis.datosST_8.tipo_antecedente,
             Antecedente: sThis.datosST_8.antecedente, // st7 o st9
+            Paciente: sThis.datosST_8.paciente,
+            Oci: sThis.datosST_8.oci,
+            Patron: sThis.datosST_8.patron,
             Fecha_antecedente: sThis.datosST_8.fecha_antecedente,
             Fecha_recaida: sThis.datosST_8.fecha_recaida,
             Se_acepta_recaida: sThis.datosST_8.se_acepta_recaida, //se acepta recaida si / no
@@ -108,6 +125,10 @@ var ST_8 = function() { // validaciones de fechas y datos en HTML
     }
 
     return {
+        getPatron,
+        setPatron,
+        getOci,
+        setOci,
         muestra_todo:muestra_todo,
         setId: setId,
         getId: getId,

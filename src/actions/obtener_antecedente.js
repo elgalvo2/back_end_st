@@ -32,12 +32,15 @@ const obtener_antecedente = async function(param){
 
     }else if(param.tipo == 'st8' && param.tipo_antecedente=='st7'){
 
+        
+
         const modelo = models['st7'];
 
-        const antecedente_obtenido = await modelo.findOne({"Paciente.No_seguro":param.no_seguro,"Fecha_accidente":param.fecha_antecedente});
+        const antecedente_obtenido = await modelo.findOne({"Paciente.No_seguro":param.no_seguro,"Fecha_accidente":param.fecha_antecedente,"St2":"true"});
         await modelo.findOneAndUpdate({"_id":antecedente_obtenido._id},{"Archivo":"adjuntado a st8"});
         antecedente_obtenido.Archivo = "adjuntado a st8";
 
+        console.log('antecedente obtenido:' , antecedente_obtenido)
         return antecedente_obtenido
     }else if(param.tipo == 'st8' && param.tipo_antecedente=='st9'){
 

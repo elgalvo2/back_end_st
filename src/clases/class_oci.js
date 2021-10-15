@@ -22,7 +22,7 @@ var OCI = function() {
         return sThis.datosOci.serie;
     }
     setTipo = function(tip) {
-        sThis.datosOCI.tipo = tipo;
+        sThis.datosOCI.tipo = tip;
     }
     getTipo = function() {
         return sThis.datosOCI.tipo;

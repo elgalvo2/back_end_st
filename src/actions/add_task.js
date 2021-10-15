@@ -14,7 +14,7 @@ const add_task = async function(params){
                 "Nombre":params.form.tecnico,
             },
             "Materiales": params.list,
-            "Realizado": params.form.Realizado
+            "Realizado": params.form.realizado
         }
         const modelo = models['orden'];
         const documento = await modelo(query).save();
