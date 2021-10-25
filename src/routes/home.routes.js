@@ -194,7 +194,22 @@ router.post('/reagendar_cita/:id',async(req, res)=>{
         res.status(500);
         res.json({ok:false});
     }
-})
+});
+
+router.post('/editar_cita/:id',async(req,res)=>{
+    console.log('body editar citaa', req.body);
+    const edit_app = require('../consultas_db/editar_cita');
+    const edited = edit_app(req.params.id, req.body);
+    if(edited){
+        res.status(200);
+        res.json({ok:true});
+    }else{
+        res.status(500);
+        res.json({ok:false});
+    };
+});
+
+
 
 router.get('/colecciones/:tipo',async (req,res)=>{
     const obtener_registro = require('../consultas_db/obtener_todo');
