@@ -5,9 +5,11 @@ router.get('/citas',async (req,res)=>{
 
     const obtener_citas_actuales = require('../consultas_db/obtener_citas_actuales');
     const citas_obtenidas = await obtener_citas_actuales();
+    console.log('citas obtenidas', citas_obtenidas)
     res.json(citas_obtenidas);
 
 });
+
 router.put('/citas/:id',(req,res)=>{
 
     const buscar = require('../consultas_db/buscar_id');
@@ -42,34 +44,120 @@ router.post('/citas/continuar_tramite/:id',async (req,res)=>{ //<---- id cita ac
         
 
     }else if(req.body.tipo == 'st3'){
-
+        try{
+            
         const actualiza_st3 = require('../consultas_db/actualiza_st3');
-        const guardado = await actualiza_st3(req.params.id,req.body);
-        res.json(guardado);
+        const eliminar = require('../consultas_db/eliminar_cita');
+        const st3_updated = await actualiza_st3(req.params.id,req.body);
+
+        if(st3_updated.res.success){
+            const app_deleted = await eliminar(req.body.id_cita);
+            if(app_deleted.res.ok){
+                res.status(200).json({success:true, message:'doc actualizado y cita eliminada'});
+            }else{
+                res.status(500).json({success:false, message:'error al eliminar la cita'});
+            }
+        }else{
+            res.status(500).json({success:false, message:'Error al actualizar doumento'});
+        }
+
+        }catch(err){
+            console.log(err);
+        }
+        
 
     }else if(req.body.tipo=='st3_rev'){
 
-        const actualiza_st3_rev = require('../consultas_db/actualiza_st3_rev');
-        const guardado = await actualiza_st3_rev(req.params.id,req.body);
-        res.json(guardado);
+        try{
+            
+            const actualiza_st3_rev = require('../consultas_db/actualiza_st3_rev');
+            const eliminar = require('../consultas_db/eliminar_cita');
+            const st3_rev_updated = await actualiza_st3_rev(req.params.id,req.body);
+    
+            if(st3_rev_updated.res.success){
+                const app_deleted = await eliminar(req.body.id_cita);
+                if(app_deleted.res.ok){
+                    res.status(200).json({success:true, message:'doc actualizado y cita eliminada'});
+                }else{
+                    res.status(500).json({success:false, message:'error al eliminar la cita'});
+                }
+            }else{
+                res.status(500).json({success:false, message:'Error al actualizar doumento'});
+            };
+    
+        }catch(err){
+            console.log(err);
+        }
+            
 
     }else if(req.body.tipo == 'st4'){
 
-        const actualiza_st4 = require('../consultas_db/actualiza_st4');
-        const guardado = await actualiza_st4(req.params.id,req.body);
-        res.json(guardado);
+        try{
+            
+            const actualiza_st4 = require('../consultas_db/actualiza_st4');
+            const eliminar = require('../consultas_db/eliminar_cita');
+            const st4_updated = await actualiza_st4(req.params.id,req.body);
+    
+            if(st4_updated.res.success){
+                const app_deleted = await eliminar(req.body.id_cita);
+                if(app_deleted.res.ok){
+                    res.status(200).json({success:true, message:'doc actualizado y cita eliminada'});
+                }else{
+                    res.status(500).json({success:false, message:'error al eliminar la cita'});
+                }
+            }else{
+                res.status(500).json({success:false, message:'Error al actualizar doumento'});
+            };
+    
+        }catch(err){
+            console.log(err);
+        }
 
     }else if(req.body.tipo == 'st4_rev'){
 
-        const actualiza_st4_rev = require('../consultas_db/actualiza_st4_rev');
-        const guardado = await actualiza_st4_rev(req.params.id,req.body);
-        res.json(guardado);
+        try{
+            
+            const actualiza_st4_rev = require('../consultas_db/actualiza_st4_rev');
+            const eliminar = require('../consultas_db/eliminar_cita');
+            const st4_rev_updated = await actualiza_st4_rev(req.params.id,req.body);
+    
+            if(st4_rev_updated.res.success){
+                const app_deleted = await eliminar(req.body.id_cita);
+                if(app_deleted.res.ok){
+                    res.status(200).json({success:true, message:'doc actualizado y cita eliminada'});
+                }else{
+                    res.status(500).json({success:false, message:'error al eliminar la cita'});
+                }
+            }else{
+                res.status(500).json({success:false, message:'Error al actualizar doumento'});
+            };
+    
+        }catch(err){
+            console.log(err);
+        }
 
     }else if(req.body.tipo == 'st6'){
 
-        const actualiza_st6 = require('../consultas_db/actualiza_st6');
-        const guardado = await actualiza_st6(req.params.id,req.body);
-        res.json(guardado);
+        try{
+            
+            const actualiza_st6 = require('../consultas_db/actualiza_st6');
+            const eliminar = require('../consultas_db/eliminar_cita');
+            const st6_updated = await actualiza_st6(req.params.id,req.body);
+    
+            if(st6_updated.res.success){
+                const app_deleted = await eliminar(req.body.id_cita);
+                if(app_deleted.res.ok){
+                    res.status(200).json({success:true, message:'doc actualizado y cita eliminada'});
+                }else{
+                    res.status(500).json({success:false, message:'error al eliminar la cita'});
+                }
+            }else{
+                res.status(500).json({success:false, message:'Error al actualizar doumento'});
+            };
+    
+        }catch(err){
+            console.log(err);
+        }
 
     }else if(req.body.tipo == 'st8'){
 
@@ -92,6 +180,36 @@ router.get('/citas_perdidas',async(req,res)=>{
     const citas_obtenidas = await obtener_citas_perdidas();
     res.json(citas_obtenidas);
 });
+
+router.post('/reagendar_cita/:id',async(req, res)=>{
+    const {fecha} = req.body;
+    const {id} = req.params;
+
+    const re_agendar = require('../consultas_db/re_agendar');
+    const re_agendado = re_agendar(id,fecha);
+    if(re_agendado){
+        res.status(200);
+        res.json({ok:true});
+    }else{
+        res.status(500);
+        res.json({ok:false});
+    }
+});
+
+router.post('/editar_cita/:id',async(req,res)=>{
+    console.log('body editar citaa', req.body);
+    const edit_app = require('../consultas_db/editar_cita');
+    const edited = edit_app(req.params.id, req.body);
+    if(edited){
+        res.status(200);
+        res.json({ok:true});
+    }else{
+        res.status(500);
+        res.json({ok:false});
+    };
+});
+
+
 
 router.get('/colecciones/:tipo',async (req,res)=>{
     const obtener_registro = require('../consultas_db/obtener_todo');
